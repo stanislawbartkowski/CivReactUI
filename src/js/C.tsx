@@ -1,5 +1,3 @@
-import { Grid } from "@material-ui/core";
-
 const C = {
 
     // some common simple functions
@@ -21,8 +19,13 @@ const C = {
     
     readyGR() { return this.res != null},
 
-    GR() { return this.res}
+    GR() { return this.res},
 
+    // misc
+    getCivShort(civ : string) {
+        return civ[0] + civ[1];
+    }
+  
 };
 
 export default C

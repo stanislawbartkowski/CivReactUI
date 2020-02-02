@@ -6,7 +6,7 @@ import ResumeGamePanel from './panels/ResumeGamePanel';
 import JoinGamePanel from './panels/JoinGamePanel';
 
 
-const MainPanel: FunctionComponent = (props) => {
+const MainPanel: FunctionComponent = () => {
     return (
         <Switch>
             <Route path='/resumegame' component={ResumeGamePanel} />

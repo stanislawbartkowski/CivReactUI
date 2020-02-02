@@ -1,19 +1,22 @@
 import React from 'react';
 import './App.css';
+
+import { BrowserRouter } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import * as actions from './store/actions'
+
+import axios from './axios';
+
 import ResponsiveDrawer from './UI/ResponsiveDrawer';
-import TestContent from './components/panel/TestContent'
 import MainPanel from './components/panel/MainPanel';
 import CivLeftMenu from './components/panel/CivLeftMenu';
 import * as civdataactions from './js/restapi';
 import C from './js/C'
-import { BrowserRouter } from 'react-router-dom'
-import { useDispatch } from 'react-redux';
-import * as actions from './store/actions'
-import { useSelector } from "react-redux";
 
-import axios from './axios';
+import Test1 from './test/Test1'
 
-const App: React.FC = () => {
+
+const App1: React.FC = () => {
 
   const dispatch = useDispatch();
 
@@ -31,6 +34,12 @@ const App: React.FC = () => {
       </div>
     </BrowserRouter>
   );
+}
+
+const App: React.FC = () => {
+  return <div>
+    <Test1 />
+  </div>
 }
 
 export default App;
