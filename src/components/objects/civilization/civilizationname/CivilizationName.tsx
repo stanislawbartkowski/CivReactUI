@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 
-import C from '../../../../js/C';
+import * as C from '../../../../js/C';
 import * as I from '../../../../js/I';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme: Theme) =>
             width: "64px",
             "border-radius": "50%",
             background: "#ddd",
-            "line-height": "64px",
-            "font-size": "30px",
+            "line-height": 2,
+            "font-size": 2*theme.typography.fontSize,
             color: "#555",
             "text-align": "center"
         },

@@ -11,12 +11,12 @@ import ResponsiveDrawer from './UI/ResponsiveDrawer';
 import MainPanel from './components/panel/MainPanel';
 import CivLeftMenu from './components/panel/CivLeftMenu';
 import * as civdataactions from './js/restapi';
-import C from './js/C'
+import * as C from './js/C'
 
 import Test1 from './test/Test1'
 
 
-const App1: React.FC = () => {
+const AppMain: React.FC = () => {
 
   const dispatch = useDispatch();
 

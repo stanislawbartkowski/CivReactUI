@@ -1,31 +1,38 @@
-const C = {
+export {}
 
-    // some common simple functions
-    log (s : string ) {
-        console.log(s);
-    },
+// ===================================
+// Some simple command procedures
+// ===================================
+export function log(s: string) {
+    console.log(s);
+}
 
-    trace(module : String, mess : String) {
-        console.log("[" + module + "] " + mess);
-    },
+export function trace(module: String, mess: String) {
+    console.log("[" + module + "] " + mess);
+}
 
-    erralert(mess : String) {
-        alert(mess);
-    },
-        
-    // main game resource
-    res : null,
-    setGR(res : any) { this.res = res; },
-    
-    readyGR() { return this.res != null},
+export function erralert(mess: String) {
+    alert(mess);
+}
 
-    GR() { return this.res},
+// ==================================
+// main game resource
+// ==================================
+var res: any = null // private
 
-    // misc
-    getCivShort(civ : string) {
-        return civ[0] + civ[1];
-    }
-  
-};
+/** Set common civilization resource */
+export function setGR(pres: any) { res = pres; }
 
-export default C
+/** Common civilization resource already set */
+export function readyGR() : Boolean { return res != null; }
+
+/** returns command resource */
+export function GR()  { return res }
+
+/** return resource civilization list */
+export function GRCivs() : Array<any> { return res.civ }
+
+// misc
+export function getCivShort(civ: string) {
+    return civ[0] + civ[1];
+}

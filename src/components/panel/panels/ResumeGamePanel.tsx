@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import Typography from '@material-ui/core/Typography';
-import C from '../../../js/C'
 
 const ResumeGamePanel: FunctionComponent = () => {
     return (

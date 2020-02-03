@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import Typography from '@material-ui/core/Typography';
-import C from '../../js/C'
+import * as C from '../../js/C'
 
 import { useSelector } from "react-redux";
 
 const TestContent: FunctionComponent = () => {
     const current = useSelector((state: any) => state.current);
-    C.trace('TestContent',current);
+    C.trace('TestContent', current);
     return (
         <React.Fragment>
             <Typography paragraph>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import C from './js/C'
+import * as C from './js/C'
   
 /* 
 FLEXIBILITY: 
