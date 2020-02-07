@@ -1,6 +1,6 @@
 import React from 'react';
 import Civilization from '../components/objects/civilization/Civilization'
-
+import Grid from '@material-ui/core/Grid';
 
 const Test1: React.FC = () => {
 
@@ -13,10 +13,12 @@ const Test1: React.FC = () => {
     };
 
     return (
-        <div>
+        <Grid container>
+            <Civilization data={civ} /> 
             <Civilization data={civ} />
-
-        </div>
+            <Civilization data={civ} /> 
+            <Civilization data={civ} />
+        </Grid>
     );
 }
 

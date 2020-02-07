@@ -1,5 +1,6 @@
 export {}
 
-export type TCivilizationProps = {
-    data: any
+export interface TCivilizationProps  {
+    data: any,
+    className? : string
 }  

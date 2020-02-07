@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 
 import * as C from '../../../js/C'
 import Civilization from '../../objects/civilization/Civilization'
+import Grid from '@material-ui/core/Grid';
+
 
 const NewGamePanel: FunctionComponent = () => {
     const current = useSelector((state: any) => state.current);
@@ -17,9 +19,9 @@ const NewGamePanel: FunctionComponent = () => {
         )
     };
     return (
-        <div>
+        <Grid container>
             {content}
-        </div>
+        </Grid>
     );
 }
 

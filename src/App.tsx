@@ -14,9 +14,17 @@ import * as civdataactions from './js/restapi';
 import * as C from './js/C'
 
 import Test1 from './test/Test1'
+import Test2 from './test/Test2'
+
+import { ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
+import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
 
 
-const AppMain: React.FC = () => {
+const theme: Theme = createMuiTheme()
+
+const App: React.FC = () => {
 
   const dispatch = useDispatch();
 
@@ -24,22 +32,24 @@ const AppMain: React.FC = () => {
   axios.get('/civdata?what=' + civdataactions.LISTOFRES).then(res => {
     C.log("Rest received")
     C.setGR(res.data);
-    dispatch({ type : actions.RESOURCE_READY});
+    dispatch({ type: actions.RESOURCE_READY });
   });
-  
+
   return (
-    <BrowserRouter>
-      <div className="App">
-        <ResponsiveDrawer main={MainPanel} leftmenu={CivLeftMenu} />
-      </div>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <div className="App">
+          <ResponsiveDrawer main={MainPanel} leftmenu={CivLeftMenu} />
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
-const App: React.FC = () => {
-  return <div>
+const AppTest: React.FC = () => {
+  return <ThemeProvider theme={theme}>
     <Test1 />
-  </div>
+  </ThemeProvider>
 }
 
 export default App;

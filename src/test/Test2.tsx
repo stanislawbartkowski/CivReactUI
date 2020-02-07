@@ -1,9 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
-import grey from '@material-ui/core/colors/grey';
 
-import * as C from '../../../../js/C';
-import * as I from '../../../../js/I';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -13,26 +10,23 @@ const useStyles = makeStyles((theme: Theme) =>
             height: "64px",
             width: "64px",
             "border-radius": "50%",
-//            background: "#ddd",
-            background : grey[300],
+            background: "#ddd",
             "line-height": 2,
-            "font-size": 2*theme.typography.fontSize,
             color: "#555",
             "text-align": "center"
         },
-
     })
 );
 
-const CivilizationName: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
+const Test2: React.FC = () => {
+
     const classes = useStyles();
-    const civ=C.getCivShort(data);
 
     return (
-        <div className={classes.CircleShapeView}>
-            {civ}
+        <div>
+            Hello
         </div>
     );
 }
 
-export default CivilizationName;
+export default Test2;

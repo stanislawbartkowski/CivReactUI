@@ -1,39 +1,65 @@
 import React, { FunctionComponent } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box'
-import { borders } from '@material-ui/system';
+import grey from '@material-ui/core/colors/grey';
+import { borders, palette, spacing, typography} from '@material-ui/system';
+import Divider from '@material-ui/core/Divider';
 
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import * as I from '../../../js/I';
 import CivilizationName from './civilizationname/CivilizationName'
+import { positions } from '@material-ui/system';
+
+const boxProps = {
+    bgcolor: grey[100],
+    m: 1,
+    height : 250,
+    width : 180,
+    p:{ xs: 2, sm: 3, md: 4 },
+    b : 1,
+    borderRadius: "borderRadius",
+    boxShadow : 1,
+    position : "relative"
+};
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        CivBox: {
-//            bgcolor: 'background.paper',
-            bgcolor: 'red',
-            m: 1,
-            style: { width: '5rem', height: '5rem' },
-            borderColor: 'text.primary',
+        CivilizationName : {
+            position:"absolute",
+            left : 1,
+            top:1
         },
+        FeatureNames : {
+            position : "absolute",
+            top : 1,
+            left : 70
+        },
+        DescName : {
+            position : "absolute",
+            top : 73,
+            left : 1,
+            fontSize : 12
+        },
+        Divider : {
+            position : "absolute",
+            top : 69,
+            left : 0,
+            width: "100%"
+        }
+
     })
 );
-
-const defaultProps = {
-    bgcolor: 'background.paper',
-    m: 1,
-    style: { width: '5rem', height: '5rem' },
-    borderColor: 'text.primary',
-  };
 
 
 const Civilization: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
     const classes = useStyles();
     return (
-        <Box component="span" border={1} borderRadius={16} borderColor="grey.500" {...defaultProps} >
-            <CivilizationName data={data.civ} />
-            {data.civ}
-        </Box>
+        <Box {...boxProps}> 
+            <div className={classes.CivilizationName}> <CivilizationName data={data.civ} /> </div>
+            <div className={classes.FeatureNames}> {data.civ} {data.tech} {data.gover} </div>
+            <Divider className={classes.Divider} light />
+            <div className={classes.DescName} > {data.desc} </div> 
+        </Box> 
     );
 }
 
