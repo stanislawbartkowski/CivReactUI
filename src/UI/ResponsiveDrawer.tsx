@@ -10,7 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 
-import CivLogo from '../components/panel/CivLogo';
+import CivLogo from '../components/panel/frontpanel/panelcomp/CivLogo';
 
 const drawerWidth = 240;
 
@@ -50,10 +50,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type TDrawerProps = {
   main: FunctionComponent,
-  leftmenu : FunctionComponent
+  leftmenu : FunctionComponent,
+  toplabel : FunctionComponent
 }
 
-const ResponsiveDrawer : FunctionComponent<TDrawerProps> = ( {main, leftmenu}) =>  {
+const ResponsiveDrawer : FunctionComponent<TDrawerProps> = ( {main, leftmenu, toplabel}) =>  {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -86,9 +87,7 @@ const ResponsiveDrawer : FunctionComponent<TDrawerProps> = ( {main, leftmenu}) =
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Responsive drawer
-          </Typography>
+          { toplabel({}) }
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">

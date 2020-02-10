@@ -3,23 +3,22 @@ import './App.css';
 
 import { BrowserRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import * as actions from './store/actions'
-
 import axios from './axios';
 
-import ResponsiveDrawer from './UI/ResponsiveDrawer';
-import MainPanel from './components/panel/MainPanel';
-import CivLeftMenu from './components/panel/CivLeftMenu';
+import FrontPanel from './components/panel/frontpanel/FrontPanel';
+
 import * as civdataactions from './js/restapi';
 import * as C from './js/C'
+import * as actions from './store/actions'
+
 
 import Test1 from './test/Test1'
 import Test2 from './test/Test2'
+import Test3 from './test/Test3'
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
-import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
-import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
+import { Theme } from '@material-ui/core/styles';
 
 
 const theme: Theme = createMuiTheme()
@@ -39,16 +38,16 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <div className="App">
-          <ResponsiveDrawer main={MainPanel} leftmenu={CivLeftMenu} />
+          <FrontPanel />
         </div>
       </BrowserRouter>
     </ThemeProvider>
   );
 }
 
-const AppTest: React.FC = () => {
+const TestApp: React.FC = () => {
   return <ThemeProvider theme={theme}>
-    <Test1 />
+    <Test3 />
   </ThemeProvider>
 }
 

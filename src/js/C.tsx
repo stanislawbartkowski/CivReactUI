@@ -7,12 +7,18 @@ export function log(s: string) {
     console.log(s);
 }
 
-export function trace(module: String, mess: String) {
+export function trace(module: string, mess: string) {
     console.log("[" + module + "] " + mess);
 }
 
-export function erralert(mess: String) {
+export function erralert(mess: string) {
     alert(mess);
+}
+
+export function tstoDate(ts : number) : string {
+    const date = new Date(ts);
+
+    return date.toLocaleString()
 }
 
 // ==================================

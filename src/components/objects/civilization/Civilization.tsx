@@ -1,14 +1,11 @@
 import React, { FunctionComponent } from 'react';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box'
 import grey from '@material-ui/core/colors/grey';
-import { borders, palette, spacing, typography} from '@material-ui/system';
 import Divider from '@material-ui/core/Divider';
 
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import * as I from '../../../js/I';
 import CivilizationName from './civilizationname/CivilizationName'
-import { positions } from '@material-ui/system';
 
 const boxProps = {
     bgcolor: grey[100],

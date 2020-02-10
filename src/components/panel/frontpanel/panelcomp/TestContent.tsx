@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Typography from '@material-ui/core/Typography';
-import * as C from '../../js/C'
+import * as C from '../../../../js/C'
 
 import { useSelector } from "react-redux";
 
