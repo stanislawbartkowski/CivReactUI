@@ -8,7 +8,8 @@ import Civilization from '../../../../objects/civilization/Civilization'
 
 
 const NewGamePanel: FunctionComponent = () => {
-    const current = useSelector((state: any) => state.current);
+    const current = useSelector(
+        (state: any) => state.newpanel.current);
     C.trace('NewGamePanel', current);
     var content: Object = 'Waiting';
     if (C.readyGR()) {

@@ -1,13 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import axios from '../../../../axios';
 
 import LeftButton from '../../../../UI/LeftButton'
 import civstring from '../../../../localize/locale';
-import * as civdataactions from '../../../../js/restapi';
-import * as C from '../../../../js/C'
-import * as actions from '../../../../store/actions'
+import * as actions from '../../../../store/resumegamepanel/actions';
 
 const CivLeftMenu: FunctionComponent = () => {
 
@@ -19,17 +16,14 @@ const CivLeftMenu: FunctionComponent = () => {
 
     return (
         <React.Fragment>
-            <LeftButton clicked={() => { history.replace("/"); dispatch({ type: actions.RESOURCE_READY }); }}
+            <LeftButton clicked={() => { history.replace("/"); }}
                 text={civstring('newgame')} />
 
             <LeftButton clicked={
                 () => {
                     history.replace("/resumegame");
-                    dispatch({ type: actions.RESUMEGAMES_WAITING });
-                    axios.get('/civdata?what=' + civdataactions.GETGAMES).then(res => {
-                        C.log("Games received");
-                        dispatch({ type: actions.RESUMEGAMES_READY, data: res.data });
-                    });
+                    dispatch(actions.resumegamesWaiting())
+                    dispatch(actions.resumegamesReady());
                 }
             }
                 text={civstring('resumegame')}

@@ -4,11 +4,21 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducer from './store/reducer';
+import { Provider  } from 'react-redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import reducerNG from './store/newgamepanel/reducer'
+import reducerRG from './store/resumegamepanel/reducer'
+import thunk from 'redux-thunk';
 
-const store = createStore(reducer);
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+
+const rootStore = combineReducers( {
+    newpanel : reducerNG,
+    resumepanel : reducerRG
+})
+
+const store = createStore(rootStore, composeEnhancer(applyMiddleware(thunk)));
 
 const app = (
     <Provider store={store}>

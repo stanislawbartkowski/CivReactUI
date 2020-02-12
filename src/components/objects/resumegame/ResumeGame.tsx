@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Box from '@material-ui/core/Box'
 import grey from '@material-ui/core/colors/grey';
-import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
-import Divider from '@material-ui/core/Divider';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 import * as I from '../../../js/I';
 import * as C from '../../../js/C';
