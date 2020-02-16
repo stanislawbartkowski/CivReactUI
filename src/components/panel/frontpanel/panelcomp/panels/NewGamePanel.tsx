@@ -1,16 +1,21 @@
 import React, { FunctionComponent } from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Grid from '@material-ui/core/Grid';
 
 import * as C from '../../../../../js/C'
 
 import Civilization from '../../../../objects/civilization/Civilization'
+import { toplabelName } from '../../../../../store/toplabel/actions';
+import { civNone} from '../../../../../store/civclicked/actions';
+import NewGameCiv from './newgameciv/NewGameCiv';
 
 
 const NewGamePanel: FunctionComponent = () => {
-    const current = useSelector(
-        (state: any) => state.newpanel.current);
+    const current = useSelector((state: any) => state.newpanel.current);
     C.trace('NewGamePanel', current);
+    const dispatch = useDispatch();
+    dispatch(toplabelName("newgame"));
+    dispatch(civNone());
     var content: Object = 'Waiting';
     if (C.readyGR()) {
         const civs: Array<any> = C.GRCivs()
@@ -21,9 +26,12 @@ const NewGamePanel: FunctionComponent = () => {
         )
     };
     return (
-        <Grid container>
-            {content}
-        </Grid>
+        <React.Fragment>
+            <Grid container>
+                {content}
+            </Grid>
+            <NewGameCiv />
+        </React.Fragment>
     );
 }
 

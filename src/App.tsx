@@ -3,19 +3,24 @@ import './App.css';
 
 import { BrowserRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
+import { ConfirmProvider } from 'material-ui-confirm';
 
 import FrontPanel from './components/panel/frontpanel/FrontPanel';
 
 import * as actions from './store//newgamepanel/actions'
+import * as C from './js/C'
 
 
 //import Test1 from './test/Test1'
 //import Test2 from './test/Test2'
 //import Test3 from './test/Test3'
+//import Test4 from './test/Test4'
+import Test5 from './test/Test5'
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { Theme } from '@material-ui/core/styles';
+import { useConfirm } from 'material-ui-confirm';
 
 const theme: Theme = createMuiTheme();
 
@@ -23,30 +28,23 @@ const App: React.FC = () => {
 
   const dispatch = useDispatch();
 
-  // read initial resource
-  //axios.get('/civdata?what=' + civdataactions.LISTOFRES).then(res => {
-  //  C.log("Rest received")
-  //  C.setGR(res.data);
-  //  dispatch(actions.resourceReady());
-  //});
-
   dispatch(actions.resourceReady());
 
   return (
-    <ThemeProvider theme={theme}>
       <BrowserRouter>
         <div className="App">
           <FrontPanel />
         </div>
       </BrowserRouter>
-    </ThemeProvider>
   );
 }
 
-//const TestApp: React.FC = () => {
-//  return <ThemeProvider theme={theme}>
-//    <Test3 />
-//  </ThemeProvider>
-//}
+const AppTest: React.FC = () => {
+
+  const confirm = useConfirm();
+  C.setConfirm(confirm);
+
+  return <Test5 />
+}
 
 export default App;

@@ -12,7 +12,11 @@ let strings = new LocalizedStrings ({
         created : "Created",
         lastplayed : "Last played",
         phase : "Phase",
-        round : "Round"
+        round : "Round",
+        confirmdefaultdialog : "Answer the question, please",
+        cancel : "Cancel",
+        ok : "Ok",
+        areyousure : 'Are you sure?'
     }
 });
 

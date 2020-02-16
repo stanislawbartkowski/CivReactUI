@@ -5,11 +5,8 @@ import * as C from '../../../../js/C'
 import civstring from '../../../../localize/locale'
 
 const TopLabel: FunctionComponent = () => {
-//    const current : string = useSelector((state: any) => state.current);
-//    const label : string = useSelector((state: any) => state.label);
-
-    const current : string ="aaaa";
-    const label : string = "newgame";
+    const current : string = useSelector((state: any) => state.toplabel.current);
+    const label : string = useSelector((state: any) => state.toplabel.label);
 
     C.trace('TopLabel', current + " " + label);
 

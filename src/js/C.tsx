@@ -1,3 +1,5 @@
+import civstring from "../localize/locale";
+
 export {}
 
 // ===================================
@@ -19,6 +21,22 @@ export function tstoDate(ts : number) : string {
     const date = new Date(ts);
 
     return date.toLocaleString()
+}
+
+// ================================
+// confirm dialog
+// ================================
+
+var confirm : any = null
+
+export function setConfirm(pconfirm : any) { confirm = pconfirm }
+
+export function confirmAlert(question : string, title : String = civstring('areyousure')) {
+    return confirm({ description: question, 
+                     confirmationText :civstring('ok'), 
+                     cancellationText : civstring('cancel'),
+                     title : title
+                     })
 }
 
 // ==================================

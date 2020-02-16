@@ -1,7 +1,13 @@
 import React, { FunctionComponent } from 'react';
 import Typography from '@material-ui/core/Typography';
+import { useSelector, useDispatch } from "react-redux";
+
+import {toplabelName} from '../../../../../store/toplabel/actions';
+
 
 const JoinGamePanel: FunctionComponent = () => {
+    const dispatch = useDispatch();
+    dispatch(toplabelName("joingame"));
     return (
             <Typography paragraph>
                 JOIN GAME PANEL

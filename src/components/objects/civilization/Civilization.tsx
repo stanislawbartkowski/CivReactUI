@@ -10,37 +10,37 @@ import CivilizationName from './civilizationname/CivilizationName'
 const boxProps = {
     bgcolor: grey[100],
     m: 1,
-    height : 250,
-    width : 180,
-    p:{ xs: 2, sm: 3, md: 4 },
-    b : 1,
+    height: 250,
+    width: 180,
+    p: { xs: 2, sm: 3, md: 4 },
+    b: 1,
     borderRadius: "borderRadius",
-    boxShadow : 1,
-    position : "relative"
+    boxShadow: 1,
+    position: "relative"
 };
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        CivilizationName : {
-            position:"absolute",
-            left : 1,
-            top:1
+        CivilizationName: {
+            position: "absolute",
+            left: 1,
+            top: 1
         },
-        FeatureNames : {
-            position : "absolute",
-            top : 1,
-            left : 70
+        FeatureNames: {
+            position: "absolute",
+            top: 1,
+            left: 70
         },
-        DescName : {
-            position : "absolute",
-            top : 73,
-            left : 1,
-            fontSize : 12
+        DescName: {
+            position: "absolute",
+            top: 73,
+            left: 1,
+            fontSize: 12
         },
-        Divider : {
-            position : "absolute",
-            top : 69,
-            left : 0,
+        Divider: {
+            position: "absolute",
+            top: 69,
+            left: 0,
             width: "100%"
         }
 
@@ -51,12 +51,12 @@ const useStyles = makeStyles((theme: Theme) =>
 const Civilization: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
     const classes = useStyles();
     return (
-        <Box {...boxProps}> 
+        <Box {...boxProps}>
             <div className={classes.CivilizationName}> <CivilizationName data={data.civ} /> </div>
             <div className={classes.FeatureNames}> {data.civ} {data.tech} {data.gover} </div>
             <Divider className={classes.Divider} light />
-            <div className={classes.DescName} > {data.desc} </div> 
-        </Box> 
+            <div className={classes.DescName} > {data.desc} </div>
+        </Box>
     );
 }
 
