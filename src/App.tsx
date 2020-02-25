@@ -3,9 +3,9 @@ import './App.css';
 
 import { BrowserRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { ConfirmProvider } from 'material-ui-confirm';
 
 import FrontPanel from './components/panel/frontpanel/FrontPanel';
+import PopUps from './components/panel/frontpanel/PopUps';
 
 import * as actions from './store//newgamepanel/actions'
 import * as C from './js/C'
@@ -17,10 +17,10 @@ import * as C from './js/C'
 //import Test4 from './test/Test4'
 import Test5 from './test/Test5'
 
-import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { Theme } from '@material-ui/core/styles';
 import { useConfirm } from 'material-ui-confirm';
+
 
 const theme: Theme = createMuiTheme();
 
@@ -35,6 +35,7 @@ const App: React.FC = () => {
         <div className="App">
           <FrontPanel />
         </div>
+        <PopUps />
       </BrowserRouter>
   );
 }

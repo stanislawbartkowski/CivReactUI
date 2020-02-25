@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
 import Button from '@material-ui/core/Button';
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import * as C from '../../../../js/C';
 import * as I from '../../../../js/I';

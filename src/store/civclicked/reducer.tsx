@@ -3,7 +3,8 @@ import { Reducer } from 'redux';
 
 const startPanel = {
     current: actions.CLICK_CIV,
-    civ: null
+    civ: null,
+    open : false
 };
 
 const reducer: Reducer = (state = startPanel, action) => {
@@ -12,7 +13,8 @@ const reducer: Reducer = (state = startPanel, action) => {
 
         case actions.CLICK_CIV: return {
             current: action.type,
-            civ: action.civ
+            civ: action.civ,
+            open : action.open
         }
 
         default: return state;

@@ -16,11 +16,19 @@ let strings = new LocalizedStrings ({
         confirmdefaultdialog : "Answer the question, please",
         cancel : "Cancel",
         ok : "Ok",
-        areyousure : 'Are you sure?'
+        areyousure : 'Are you sure?',
+        titlestarttraining : "Start training game",
+        doyouwanttostarttrainig : "Do you want to start training game as {0} ?"
     }
 });
 
 
-const civstring  = (id) => { return strings[id]; }
+const civstring  = (id,...args) => { 
+    let s = strings[id]; 
+    for (let i = 0; i < args.length; i++) {
+        s = s.replace("{" + i + "}", args[i])
+      }
+    return s;
+}
 
 export default civstring;

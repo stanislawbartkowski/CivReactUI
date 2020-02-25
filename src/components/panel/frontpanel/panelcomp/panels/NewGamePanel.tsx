@@ -6,9 +6,7 @@ import * as C from '../../../../../js/C'
 
 import Civilization from '../../../../objects/civilization/Civilization'
 import { toplabelName } from '../../../../../store/toplabel/actions';
-import { civNone} from '../../../../../store/civclicked/actions';
-import NewGameCiv from './newgameciv/NewGameCiv';
-
+import { civNone } from '../../../../../store/civclicked/actions';
 
 const NewGamePanel: FunctionComponent = () => {
     const current = useSelector((state: any) => state.newpanel.current);
@@ -25,14 +23,9 @@ const NewGamePanel: FunctionComponent = () => {
             </span>
         )
     };
-    return (
-        <React.Fragment>
-            <Grid container>
-                {content}
-            </Grid>
-            <NewGameCiv />
-        </React.Fragment>
-    );
+    return <Grid container>
+        {content}
+    </Grid>;
 }
 
 export default NewGamePanel;

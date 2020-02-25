@@ -9,7 +9,8 @@ and only import instance in components that make
 requests to unique URL.
 */
 const instance = axios.create({
-  baseURL: 'http://thinkde:8000/rest'
+//  baseURL: 'http://thinkde:8000/rest'
+  baseURL: 'http://localhost:8000/rest'
 });
 
 
