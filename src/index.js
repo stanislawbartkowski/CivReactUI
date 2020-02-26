@@ -16,6 +16,7 @@ import reducerNG from './store/newgamepanel/reducer'
 import reducerRG from './store/resumegamepanel/reducer'
 import reducerTL from './store/toplabel/reducer'
 import reducerCV from './store/civclicked/reducer'
+import reducerBO from './store/boardactions/reducer'
 
 const theme = createMuiTheme();
 
@@ -26,7 +27,8 @@ const rootStore = combineReducers({
     newpanel: reducerNG,
     resumepanel: reducerRG,
     toplabel: reducerTL,
-    clickciv : reducerCV
+    clickciv : reducerCV,
+    gameboard : reducerBO
 })
 
 const store = createStore(rootStore, composeEnhancer(applyMiddleware(thunk)));

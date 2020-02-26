@@ -6,12 +6,13 @@ import ResponsiveDrawer from '../../../UI/ResponsiveDrawer';
 import MainPanel from './panelcomp/MainPanel';
 import CivLeftMenu from './panelcomp/CivLeftMenu';
 import TopLabel from './panelcomp/TopLabel';
+import BoardGame from '../boardgame/BoardGame';
 
 const FrontPanel: React.FC = () => {
 
   return (
     <Switch>
-      <Route path='/boardgame' />
+      <Route path='/boardgame'> <BoardGame/> </Route>
       <Route path="/"> <ResponsiveDrawer main={MainPanel} leftmenu={CivLeftMenu} toplabel = {TopLabel} /> </Route>
     </Switch>
   );
