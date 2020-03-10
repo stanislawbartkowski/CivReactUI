@@ -18,7 +18,7 @@ const ResumeGamePanel: FunctionComponent = () => {
 
     var content: Object = 'Waiting';
     if (current === actions.RESUMEGAMES_READY) {
-        if (games.map == null || games.map.length == 0)
+        if (games == null || games.length == 0)
             content = "No games to resume";
         else
             content = games.map(game =>

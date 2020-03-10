@@ -54,7 +54,20 @@ export function readyGR() : Boolean { return res != null; }
 export function GR()  { return res }
 
 /** return resource civilization list */
-export function GRCivs() : Array<any> { return res.civ }
+export function GRCivs() : Array<any> { return res.civ; }
+
+var token : string = "" // private
+
+/** Set token specific to current game */
+export function setToken(ptoken : string) { token = ptoken; }
+
+export function clearToken() { setToken(""); }
+
+/** Get current token */
+export function getToken() { return token; }
+
+/** Game on board */
+export function isToken() { return token != "";}
 
 // misc
 export function getCivShort(civ: string) {

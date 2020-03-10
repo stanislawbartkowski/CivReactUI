@@ -21,7 +21,7 @@ instance.interceptors.response.use((response) => response, (error) => {
     throw error;
   })
 
-instance.defaults.headers.common['Authorization'] = 'AUTH TOKEN FROM INSTANCE';
+//instance.defaults.headers.common['Authorization'] = 'AUTH TOKEN FROM INSTANCE';
 
 
 export default instance;

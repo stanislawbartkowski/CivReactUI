@@ -9,6 +9,7 @@ import PopUps from './components/panel/frontpanel/PopUps';
 
 import * as actions from './store//newgamepanel/actions'
 import * as C from './js/C'
+import {refresh_board } from './store/boardactions/actions'
 
 
 //import Test1 from './test/Test1'
@@ -30,13 +31,21 @@ const App: React.FC = () => {
 
   dispatch(actions.resourceReady());
 
+  const refreshboard = () => {
+    if (C.isToken()) {
+      dispatch(refresh_board(C.getToken()));
+    }
+  }
+
+  setInterval(refreshboard, 5000);
+
   return (
-      <BrowserRouter>
-        <div className="App">
-          <FrontPanel />
-        </div>
-        <PopUps />
-      </BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
+        <FrontPanel />
+      </div>
+      <PopUps />
+    </BrowserRouter>
   );
 }
 
