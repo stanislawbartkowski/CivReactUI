@@ -33,6 +33,7 @@ const NewGameCiv: FunctionComponent = () => {
     const current = useSelector((state: any) => state.clickciv.current);
     const civ = useSelector((state: any) => state.clickciv.civ);
     const open = useSelector((state: any) => state.clickciv.open);
+    const params = useSelector((state: any) => state.clickciv.params);
     const dispatch = useDispatch();
     const classes = useStyles();
     const history = useHistory();
@@ -46,8 +47,8 @@ const NewGameCiv: FunctionComponent = () => {
 
     const newTraining = () => {
         handleClose();
-        dispatch(start_board_training(civ));
-        history.push("/boardgame")
+        params.action();
+        history.push("/boardgame");
     }
 
     if (civ == null) {
@@ -59,11 +60,11 @@ const NewGameCiv: FunctionComponent = () => {
             onClose={handleClose}
             aria-labelledby="responsive-dialog-title"
         >
-            <DialogTitle id="responsive-dialog-title">{civstring("titlestarttraining")}</DialogTitle>
+            <DialogTitle id="responsive-dialog-title">{civstring(params.titlestart)}</DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     <span className={classes.CivName} > <CivilizationName data={civ} /> </span>
-                    <span>{civstring("doyouwanttostarttrainig", civ)}</span>
+                    <span>{civstring(params.doyouwanttostart, civ)}</span>
                 </DialogContentText>
             </DialogContent>
             <DialogActions>

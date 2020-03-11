@@ -3,11 +3,14 @@ import Box from '@material-ui/core/Box'
 import grey from '@material-ui/core/colors/grey';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { useDispatch } from "react-redux";
+import axios from '../../../axios'
+
 
 import * as I from '../../../js/I';
 import * as C from '../../../js/C';
 import civstring from '../../../localize/locale'
-import { resume_board_game } from '../../../store/boardactions/actions';
+import { civClicked } from '../../../store/civclicked/actions'
+
 
 
 const boxProps = {
@@ -55,10 +58,26 @@ const ResumeGame: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
         playstring = data.civ[0] + " " + data.civ[1]
     }
 
+    const resume_board_game = (id: String, civ: string) => {
+        axios.get('/resumegame?gameid=' + id + "&civ=" + civ).then(res => {
+            C.log("Game resumed");
+            const token: String = res.data;
+            C.log("token=" + token);
+            const t: string[] = token.split(",");
+            C.setToken(t[0]);
+        });
+    }
+
+
     const resumegame = (id: String, civ: string) => {
         C.log("resume " + id + " " + civ);
-        dispatch(resume_board_game(id,civ));
+        dispatch(civClicked(civ, {
+            titlestart: "titleresumetraining",
+            doyouwanttostart: "doyouwanttoresumetrainig",
+            action: () => { resume_board_game(id, civ); }
+        }))
     }
+
 
     return (
         <Box {...boxProps}>

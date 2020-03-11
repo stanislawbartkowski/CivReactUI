@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import * as C from '../../../../js/C';
 import * as I from '../../../../js/I';
 import { civClicked } from '../../../../store/civclicked/actions'
+import { start_board_training } from '../../../../store/boardactions/actions'
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -32,7 +33,11 @@ const CivilizationName: FunctionComponent<I.TCivilizationProps> = ({ data }) => 
     const dispatch = useDispatch();
 
     return (
-        <Button className={classes.CircleShapeView} onClick={() => dispatch(civClicked(data))} >
+        <Button className={classes.CircleShapeView} onClick={() => dispatch(civClicked(data, {
+            titlestart: "titlestarttraining",
+            doyouwanttostart: "doyouwanttostarttrainig",
+            action: () => { dispatch(start_board_training(civ)); }
+        }))} >
             {civ}
         </Button>
     );

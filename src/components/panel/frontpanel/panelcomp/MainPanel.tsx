@@ -5,8 +5,17 @@ import NewGamePanel from './panels/NewGamePanel';
 import ResumeGamePanel from './panels/ResumeGamePanel';
 import JoinGamePanel from './panels/JoinGamePanel';
 
+import * as C from '../../../../js/C'
+import * as civdataactions from '../../../../js/restapi'
+import axios from '../../../../axios'
 
 const MainPanel: FunctionComponent = () => {
+
+    if (C.isToken()) {
+        // dispose token
+        axios.get('/civdata?what=' + civdataactions.UNREGISTERTOKEN, { 'headers': { 'Authorization': 'Token ' + C.getToken() } });
+        C.clearToken();
+    }
     return (
         <Switch>
             <Route path='/resumegame' component={ResumeGamePanel} />

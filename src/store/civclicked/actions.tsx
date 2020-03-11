@@ -1,10 +1,17 @@
 export const CLICK_CIV: string = "CLICK_CIV";
 
-export const civClicked = (civ : string) => {
+export type StartGamePars = {
+    titlestart : string,
+    doyouwanttostart : string,
+    action : () => void
+}
+
+export const civClicked = (civ : string, params: StartGamePars) => {
     return {
         type: CLICK_CIV,
         civ : civ,
-        open : true
+        open : true,
+        params : params
     }
 }
 
@@ -12,6 +19,7 @@ export const civNone = () => {
     return {
         type: CLICK_CIV,
         civ : null,
-        open : false
+        open : false,
+        params : null
     }
 }

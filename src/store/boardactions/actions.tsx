@@ -17,6 +17,9 @@ export const refresh_board = (token: String) => {
         axios.get('/civdata?what=' + civdataactions.GETBOARD, { 'headers': { 'Authorization': 'Token ' + token } }).then(res => {
             C.log("Game board read");
             const board = res.data
+            // the empty string means that board has not changed since the previous call
+            if (board != "")
+                dispatch(game_board(board));
         });
     }
 }
@@ -27,16 +30,3 @@ export const start_board_training = (civ: String) => {
         dispatch(game_board({ a: "b" }));
     }
 }
-
-export const resume_board_game = (id: String, civ: string) => {
-    return (dispatch: any) => {
-        axios.get('/resumegame?gameid=' + id + "&civ=" + civ).then(res => {
-            C.log("Game resumed");
-            const token : String = res.data;
-            C.log("token=" + token);
-            const t : string[] = token.split(",");
-            C.setToken(t[0]);
-        });
-    }
-}
-

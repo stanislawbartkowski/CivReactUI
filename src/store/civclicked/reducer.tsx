@@ -14,7 +14,8 @@ const reducer: Reducer = (state = startPanel, action) => {
         case actions.CLICK_CIV: return {
             current: action.type,
             civ: action.civ,
-            open : action.open
+            open : action.open,
+            params : action.params
         }
 
         default: return state;
