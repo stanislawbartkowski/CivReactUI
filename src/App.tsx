@@ -16,7 +16,8 @@ import {refresh_board } from './store/boardactions/actions'
 //import Test2 from './test/Test2'
 //import Test3 from './test/Test3'
 //import Test4 from './test/Test4'
-import Test5 from './test/Test5'
+//import Test5 from './test/Test5'
+import Test6 from './test/Test6'
 
 import { createMuiTheme } from '@material-ui/core/styles';
 import { Theme } from '@material-ui/core/styles';
@@ -25,7 +26,7 @@ import { useConfirm } from 'material-ui-confirm';
 
 const theme: Theme = createMuiTheme();
 
-const App: React.FC = () => {
+const XApp: React.FC = () => {
 
   const dispatch = useDispatch();
 
@@ -49,12 +50,12 @@ const App: React.FC = () => {
   );
 }
 
-const AppTest: React.FC = () => {
+const App: React.FC = () => {
 
   const confirm = useConfirm();
   C.setConfirm(confirm);
 
-  return <Test5 />
+  return <Test6 />
 }
 
 export default App;

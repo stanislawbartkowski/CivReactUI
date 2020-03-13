@@ -12,8 +12,8 @@ const FrontPanel: React.FC = () => {
 
   return (
     <Switch>
-      <Route path='/boardgame'> <BoardGame/> </Route>
-      <Route path="/"> <ResponsiveDrawer main={MainPanel} leftmenu={CivLeftMenu} toplabel = {TopLabel} /> </Route>
+      <Route exact path='/boardgame'> <BoardGame/> </Route>
+      <Route exact path="/"> <ResponsiveDrawer main={MainPanel} leftmenu={CivLeftMenu} toplabel = {TopLabel} /> </Route>
     </Switch>
   );
 }

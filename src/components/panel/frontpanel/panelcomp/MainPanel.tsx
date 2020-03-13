@@ -18,9 +18,9 @@ const MainPanel: FunctionComponent = () => {
     }
     return (
         <Switch>
-            <Route path='/resumegame' component={ResumeGamePanel} />
-            <Route path='/joingame' component={JoinGamePanel} />
-            <Route path='/' component={NewGamePanel} />
+            <Route exact path='/resumegame' component={ResumeGamePanel} />
+            <Route exact path='/joingame' component={JoinGamePanel} />
+            <Route exact path='/' component={NewGamePanel} />
         </Switch>
     );
 }
