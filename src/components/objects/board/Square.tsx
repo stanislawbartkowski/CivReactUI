@@ -9,15 +9,16 @@ import * as I from '../../../js/I';
 const defaultProps = {
     bgcolor: 'background.paper',
     borderColor: 'text.primary',
-    m: 1,
-    border: 0.5,
-    style: { width: '3rem', height: '3rem' },
+    m: 0,
+    border: 0.1,
+    style: { width: 60, height: 45 },
   };
 
 const Square: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
 
     return (
         <Box component="div" {...defaultProps}>
+            {data}
         </Box>
     );
 }
