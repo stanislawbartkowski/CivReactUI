@@ -1,5 +1,12 @@
 export {}
 
+import { SvgIconProps } from '@material-ui/core/SvgIcon';
+
+export interface TSvgComponent {
+    props: SvgIconProps,
+    className? : string
+}
+
 export interface TCivilizationProps  {
     data: any,
     className? : string

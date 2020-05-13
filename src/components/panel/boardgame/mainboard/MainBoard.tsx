@@ -2,9 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-
-import Square from '../../../objects/board/Square'
+import GameMap from '../../../objects/board/GameMap'
 
 import * as C from '../../../../js/C'
 import * as I from '../../../../js/I'
@@ -18,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const MainBoard: FunctionComponent = () => {
+const MainBoard: FunctionComponent = (board: any) => {
 
   const current = useSelector((state: any) => state.gameboard.current);
   const mboard = useSelector((state: any) => state.gameboard.board);
@@ -32,19 +30,9 @@ const MainBoard: FunctionComponent = () => {
 
   if (noboard) return null;
   else {
-    const board = mboard.board;
-    const dim: I.Pos = C.calculatedim(board.map);
-
+    const map = mboard.board.map;
     return (
-      <Grid container className={classes.root} spacing={0}>
-        {C.range(dim.row).map(i => (
-          <Grid container direction="row" spacing={0}>
-            {C.range(dim.col).map(j => (
-              <Square data={"i=" + i + " j=" + j} />
-            ))}
-          </Grid>
-        ))}
-      </Grid>
+      <GameMap data={map}></GameMap>
     );
   }
 }

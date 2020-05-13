@@ -11,12 +11,12 @@ import Desert from '../../../resources/images/terrain/desert.svg'
 import Forest from '../../../resources/images/terrain/forest.svg'
 import Water from '../../../resources/images/terrain/water.svg'
 
-import { ReactComponent as Wheat } from '../../../resources/images/resource/wheat.svg'
-import { ReactComponent as Coin } from '../../../resources/images/resource/coin.svg'
-import { ReactComponent as Incense } from '../../../resources/images/resource/incense.svg'
-import { ReactComponent as Iron } from '../../../resources/images/resource/iron.svg'
-import { ReactComponent as Silk } from '../../../resources/images/resource/silk.svg'
-import { ReactComponent as Culture } from '../../../resources/images/tokens/culture.svg'
+import Wheat from '../../images/Wheat'
+import Coin from '../../images/Coin'
+import Incense from '../../images/Incense'
+import Iron from '../../images/Iron'
+import Silk from '../../images/Silk'
+import Culture from '../../images/Culture'
 
 import * as I from '../../../js/I';
 
@@ -91,24 +91,19 @@ const Square: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
             case "Water": cl = classes.Water; break;
         }
         if (data.resource) {
-            let res = Culture;
-            let viewBox=""
+            let Res : FunctionComponent<I.TSvgComponent> = Culture;
             switch (data.resource) {
-                case "Wheat": res = Wheat; viewBox="0 0 163.575 163.575"; break;
-                case "Coin": res = Coin; viewBox="0 0 56 56"; break;
-                case "Silk": res = Silk; viewBox="0 0 512 512"; break;
-                case "Incense": res = Incense; viewBox="0 0 17.086 17.086"; break;
-                case "Iron": res = Iron; viewBox="0 0 512 512"; break;
-                case "Culture": res = Culture; viewBox="0 0 58.3575 58.3575"; break;            
+                case "Wheat": Res = Wheat; break;
+                case "Coin": Res = Coin; break;
+                case "Silk": Res = Silk; break;
+                case "Incense": Res = Incense; break;
+                case "Iron": Res = Iron; break;
+                case "Culture": Res = Culture; break;            
             }
-            resource = <div>
-                <SvgIcon className={classes.Resource} component={res} viewBox={viewBox} {...defaultIProps} />
-            </div>;
+            resource = <div><Res className={classes.Resource} props={defaultIProps}/></div>
         }
 
     }
-
-    const wheat = Wheat;
 
     return (
         <Box className={cl} component="div" {...defaultProps}>

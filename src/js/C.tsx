@@ -95,3 +95,19 @@ export function range(size: number): ReadonlyArray<number> {
     return Array.from({ length: size }, (value, key) => key);
 }
 
+/** transforms grid coordinates on board to board coordinates 
+ * pos: grid coordinates, (top,left) = (0,0)
+ * dim : dimension of the board, numer of rows and columns
+ * return: gameboard coordinates
+*/
+export function gtoB(pos : I.Pos, dim : I.Pos) : I.Pos {
+
+    return { row : dim.row - pos.row - 1, col: pos.col};
+}
+
+export function getSquare(map : any, pos : I.Pos) {
+    const ma : Array<any>  = map
+    const row : Array<any> = ma[pos.row]
+    const da : any = row[pos.col]
+    return da
+}

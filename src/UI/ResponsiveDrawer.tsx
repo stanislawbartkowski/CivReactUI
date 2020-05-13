@@ -122,7 +122,7 @@ const ResponsiveDrawer : FunctionComponent<TDrawerProps> = ( {main, leftmenu, to
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        { main({})}
+        {main({})}
       </main>
     </div>
   );

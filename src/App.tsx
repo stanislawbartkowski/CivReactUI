@@ -27,7 +27,7 @@ import { useConfirm } from 'material-ui-confirm';
 
 const theme: Theme = createMuiTheme();
 
-const XApp: React.FC = () => {
+const App: React.FC = () => {
 
   const dispatch = useDispatch();
 
@@ -51,7 +51,7 @@ const XApp: React.FC = () => {
   );
 }
 
-const App: React.FC = () => {
+const XApp: React.FC = () => {
 
   const confirm = useConfirm();
   C.setConfirm(confirm);
