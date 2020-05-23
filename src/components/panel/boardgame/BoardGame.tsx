@@ -1,16 +1,16 @@
-import React, { FunctionComponent } from 'react';
+import React, { ReactElement }  from 'react';
 
-import { useSelector } from "react-redux";
-
-
+import { useSelector, ReactReduxContext } from "react-redux";
 
 import ResponsiveDrawer from '../../../UI/ResponsiveDrawer';
-import PlayerControl from './playercontrol/PlayerControl';
+import PlayerControl from '../../objects/board/PlayerControl';
 
-import MainBoard from './mainboard/MainBoard';
-import TopStatus from './topstatus/TopStatus';
+import TopStatusMap from '../../objects/board/TopStatusMap';
+import GameMap from '../../objects/board/GameMap'
+
 
 import * as C from '../../../js/C'
+
 
 
 const BoardGame: React.FC = () => {
@@ -21,14 +21,17 @@ const BoardGame: React.FC = () => {
 
   C.trace('MainBoard', current + " " + mboard + " " + token);
 
-
   const noboard = (mboard == null) || (token != C.getToken());
 
   if (noboard) return null;
   else {
-
+    const map = mboard.board.map;
+    const game = mboard.board.game;
+    const main : ReactElement = <GameMap data={map} />
+    const leftmenu : ReactElement = <PlayerControl />
+    const topmenu : ReactElement = <TopStatusMap data={game} />
     return (
-      <ResponsiveDrawer main={MainBoard} leftmenu={PlayerControl} toplabel={TopStatus} />
+      <ResponsiveDrawer main={main} leftmenu={leftmenu} toplabel={topmenu} />
     );
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 
@@ -10,10 +10,14 @@ import BoardGame from '../boardgame/BoardGame';
 
 const FrontPanel: React.FC = () => {
 
+  const main: ReactElement = <MainPanel />
+  const leftmenu: ReactElement = <CivLeftMenu />
+  const toplabel: ReactElement = <TopLabel />
+
   return (
     <Switch>
-      <Route exact path='/boardgame'> <BoardGame/> </Route>
-      <Route path="/"> <ResponsiveDrawer main={MainPanel} leftmenu={CivLeftMenu} toplabel = {TopLabel} /> </Route>
+      <Route exact path='/boardgame'> <BoardGame /> </Route>
+      <Route path="/"> <ResponsiveDrawer main={main} leftmenu={leftmenu} toplabel={toplabel} /> </Route>
     </Switch>
   );
 }

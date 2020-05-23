@@ -1,4 +1,4 @@
-import React, { FunctionComponent} from 'react';
+import React, { FunctionComponent, ReactElement} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -48,11 +48,20 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+/*
 type TDrawerProps = {
   main: FunctionComponent,
   leftmenu : FunctionComponent,
   toplabel : FunctionComponent
 }
+*/
+
+type TDrawerProps = {
+  main: ReactElement,
+  leftmenu : ReactElement,
+  toplabel : ReactElement
+}
+
 
 const ResponsiveDrawer : FunctionComponent<TDrawerProps> = ( {main, leftmenu, toplabel}) =>  {
   const classes = useStyles();
@@ -69,7 +78,7 @@ const ResponsiveDrawer : FunctionComponent<TDrawerProps> = ( {main, leftmenu, to
         <CivLogo />
       </div>
       <Divider />
-      { leftmenu({}) }
+      { leftmenu }
     </div>
   );
 
@@ -87,7 +96,7 @@ const ResponsiveDrawer : FunctionComponent<TDrawerProps> = ( {main, leftmenu, to
           >
             <MenuIcon />
           </IconButton>
-          { toplabel({}) }
+          { toplabel}
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
@@ -122,7 +131,7 @@ const ResponsiveDrawer : FunctionComponent<TDrawerProps> = ( {main, leftmenu, to
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        {main({})}
+        {main}
       </main>
     </div>
   );
