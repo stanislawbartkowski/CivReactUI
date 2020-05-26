@@ -7,10 +7,10 @@ import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 
 import CivLogo from '../components/panel/frontpanel/panelcomp/CivLogo';
+import * as I from '../js/I';
 
 const drawerWidth = 240;
 
@@ -78,7 +78,7 @@ const ResponsiveDrawer : FunctionComponent<TDrawerProps> = ( {main, leftmenu, to
         <CivLogo />
       </div>
       <Divider />
-      { leftmenu }
+        {leftmenu}
     </div>
   );
 

@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
 
 import grey from '@material-ui/core/colors/grey';
 

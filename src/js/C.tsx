@@ -1,5 +1,6 @@
 import civstring from "../localize/locale";
 import * as I from './I';
+import red from '@material-ui/core/colors/red';
 
 export { }
 
@@ -110,4 +111,11 @@ export function getSquare(map : any, pos : I.Pos) {
     const row : Array<any> = ma[pos.row]
     const da : any = row[pos.col]
     return da
+}
+
+/**
+ * Get color for the player
+ */
+export function getColor(civ : string) : string {
+    return red[600];
 }

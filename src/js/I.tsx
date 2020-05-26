@@ -9,7 +9,7 @@ export interface TSvgComponent {
 
 export interface TCivilizationProps  {
     data: any,
-    className? : string
+    className? : string,
 }  
 
 export type Pos = { row : number, col : number };

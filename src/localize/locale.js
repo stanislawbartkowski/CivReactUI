@@ -3,7 +3,7 @@ import LocalizedStrings from 'react-localization';
 
 let strings = new LocalizedStrings({
     en: {
-        civlogo: "Civilization",
+        civlogo: "Civilization Board Game",
         newgame: "New game",
         resumegame: "Resume game",
         joingame: "Join game",
@@ -20,7 +20,19 @@ let strings = new LocalizedStrings({
         titlestarttraining: "Start training game",
         doyouwanttostarttrainig: "Do you want to start training game as {0} ?",
         titleresumetraining: "Resume training game",
-        doyouwanttoresumetrainig: "Do you want to resume training game as {0} ?"
+        doyouwanttoresumetrainig: "Do you want to resume training game as {0} ?",
+        activeciv: "Active",
+        gamephase: "Phase",
+        roundno : "Round no",
+        trade : "Trade",
+        citylimit : "City limit",
+        armieslimit : "Armies limit",
+        scoutslimit : "Scouts limit",
+        tradeforprod : "Trade prod",
+        handsize : "Hand size",
+        travelspeed : "Travel speed",
+        stacklimit : "Stack limit",
+        combatbonus : "Combat bonus"
     }
 });
 

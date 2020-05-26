@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-const GameMap : FunctionComponent<I.TCivilizationProps> = (data: any) => {
+const GameMap : FunctionComponent<I.TCivilizationProps> = (props: any) => {
 
     const classes = useStyles();
 
-    const map = data.data;
+    const map = props.data;
     const dim: I.Pos = C.calculatedim(map);
 
     return (
