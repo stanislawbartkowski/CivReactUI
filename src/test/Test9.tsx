@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 import Unit from '../components/objects/board/units/Unit'
+import UnitArmed from '../components/objects/board/units/UnitArmed'
 
 import * as C from '../js/C'
 
@@ -54,6 +55,12 @@ const Test9: React.FC = () => {
             <Unit data={s1} />
             <Unit data={s2} />
             <Unit data={s3} />
+
+            <UnitArmed data={s} level={0}/>
+            <UnitArmed data={s1} level={1} />
+            <UnitArmed data={s2} level={2}/>
+            <UnitArmed data={s3} level={3}/>
+
         </Grid>
     );
 }

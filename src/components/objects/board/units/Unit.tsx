@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
            fontSize : 9,
            color : "black",
            fontWeight : 700,
-           "line-height": "normal"
+           lineHeight: "normal",
         },
         paper: {
             padding: 1,

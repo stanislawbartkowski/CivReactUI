@@ -16,7 +16,6 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { civNone } from '../../../../../../store/civclicked/actions';
 import CivilizationName from '../../../../../objects/civilization/civilizationname/CivilizationName';
 import civstring from '../../../../../../localize/locale';
-import { start_board_training } from '../../../../../../store/boardactions/actions';
 
 import * as C from '../../../../../../js/C';
 

@@ -5,7 +5,8 @@ import { BrowserRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 
 import FrontPanel from './components/panel/frontpanel/FrontPanel';
-import PopUps from './components/panel/frontpanel/PopUps';
+import PopUps from './components/popups/PopUps'; 
+
 
 import * as actions from './store//newgamepanel/actions'
 import * as C from './js/C'
@@ -19,7 +20,7 @@ import {refresh_board } from './store/boardactions/actions'
 //import Test5 from './test/Test5'
 //import Test6 from './test/Test6'
 //import Test7 from './test/Test7'
-//import Test8 from './test/Test8'
+import Test8 from './test/Test8'
 import Test9 from './test/Test9'
 
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -58,7 +59,7 @@ const App: React.FC = () => {
   const confirm = useConfirm();
   C.setConfirm(confirm);
 
-  return <Test9 />
+  return <Test8 />
 }
 
 export default App;
