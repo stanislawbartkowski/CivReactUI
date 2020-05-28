@@ -27,9 +27,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-//        <Paper className={classes.paper}>{game.active}</Paper> 
-
-
 const TopStatusMap : FunctionComponent<I.TCivilizationProps> = (props: any) => {
 
     const classes = useStyles();

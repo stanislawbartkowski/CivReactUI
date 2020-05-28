@@ -53,7 +53,7 @@ const Unit: FunctionComponent<I.TCivilizationProps> = (props) => {
 
     const strength = <Grid item direction="column" spacing={4}>
         {C.range(list.length).map(i => (
-            <Typography className={classes.number}>{list[i]}</Typography>
+            <Typography key={i} className={classes.number}>{list[i]}</Typography>
         ))} </Grid>
 
 

@@ -21,7 +21,7 @@ const PlayerStatus: FunctionComponent<I.TCivilizationProps> = (props) => {
         <PlayerInfo label="tradeforprod" info={you.tradeforprod}></PlayerInfo>
         <PlayerInfo label="handsize" info={you.handsize}></PlayerInfo>
         <PlayerInfo label="travelspeed" info={you.travelspeed}></PlayerInfo>
-        <PlayerInfo label="stacklimit" info={you.stacklimit}></PlayerInfo>
+        <PlayerInfo label="stacklimit" info={you.stacombatbonuscklimit}></PlayerInfo>
         <PlayerInfo label="combatbonus" info={you.combatbonus}></PlayerInfo>
         
     </Grid>

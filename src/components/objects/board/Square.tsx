@@ -10,12 +10,8 @@ import Desert from '../../../resources/images/terrain/desert.svg'
 import Forest from '../../../resources/images/terrain/forest.svg'
 import Water from '../../../resources/images/terrain/water.svg'
 
-import Wheat from '../../images/Wheat'
-import Coin from '../../images/Coin'
-import Incense from '../../images/Incense'
-import Iron from '../../images/Iron'
-import Silk from '../../images/Silk'
-import Culture from '../../images/Culture'
+import getResource from './resources/getResource'
+
 
 import * as I from '../../../js/I';
 
@@ -90,15 +86,7 @@ const Square: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
             case "Water": cl = classes.Water; break;
         }
         if (data.resource) {
-            let Res : FunctionComponent<I.TSvgComponent> = Culture;
-            switch (data.resource) {
-                case "Wheat": Res = Wheat; break;
-                case "Coin": Res = Coin; break;
-                case "Silk": Res = Silk; break;
-                case "Incense": Res = Incense; break;
-                case "Iron": Res = Iron; break;
-                case "Culture": Res = Culture; break;            
-            }
+            let Res = getResource(data.resource)
             resource = <div><Res className={classes.Resource} props={defaultIProps}/></div>
         }
 

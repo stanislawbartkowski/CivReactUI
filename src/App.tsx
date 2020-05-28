@@ -22,6 +22,7 @@ import {refresh_board } from './store/boardactions/actions'
 //import Test7 from './test/Test7'
 import Test8 from './test/Test8'
 import Test9 from './test/Test9'
+import Test10 from './test/Test10'
 
 import { createMuiTheme } from '@material-ui/core/styles';
 import { Theme } from '@material-ui/core/styles';
@@ -59,7 +60,7 @@ const App: React.FC = () => {
   const confirm = useConfirm();
   C.setConfirm(confirm);
 
-  return <Test8 />
+  return <Test10 />
 }
 
 export default App;

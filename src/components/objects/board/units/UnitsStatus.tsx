@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const UnitStatus: FunctionComponent<I.TCivilizationProps> = (props) => {
 
-    const units = props.data.units.list
+    const units = props.data.units
     const unitsno = units.length;
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);

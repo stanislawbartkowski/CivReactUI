@@ -13,3 +13,6 @@ export interface TCivilizationProps  {
 }  
 
 export type Pos = { row : number, col : number };
+
+export type ResourceT = { resource: string, hv: string };
+

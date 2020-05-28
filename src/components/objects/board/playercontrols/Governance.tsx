@@ -6,17 +6,14 @@ import * as I from '../../../../js/I'
 import * as C from '../../../../js/C'
 
 const useStyles = makeStyles((theme: Theme) =>
-        createStyles({
-            paper: {
-                padding: 5,
-                textAlign: 'center',
-                margin: 5,
-            },
-        }
-        ))
-    
-    
-
+    createStyles({
+        paper: {
+            padding: 5,
+            textAlign: 'center',
+            margin: 5,
+        },
+    }
+    ))
 
 const Governance: FunctionComponent<I.TCivilizationProps> = (props) => {
 

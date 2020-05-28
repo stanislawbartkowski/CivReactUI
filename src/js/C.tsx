@@ -25,6 +25,10 @@ export function tstoDate(ts: number): string {
     return date.toLocaleString()
 }
 
+export function internalerrorlog(mess : string) {
+    log("Internal error :" + mess)
+}
+
 // ================================
 // confirm dialog
 // ================================
@@ -115,7 +119,24 @@ export function getSquare(map : any, pos : I.Pos) {
 
 /**
  * Get color for the player
+ *   civ : civilization, the color should be different for you and opponent
+ *   return : color
  */
 export function getColor(civ : string) : string {
     return red[600];
+}
+
+/** 
+ * Get military strength for a branch
+ * strenght : list of military branch and strength
+ * branch : military branch to be looked for
+ * return : military strength
+ */
+export function getStrength(strength : Array<any>, branch : string) : number {
+    const f = strength.find(e => e.name == branch)
+    if (f == null) {
+        internalerrorlog(branch + " cannot find this branch")
+        return 0
+    }
+    return f.militarystrength   
 }
