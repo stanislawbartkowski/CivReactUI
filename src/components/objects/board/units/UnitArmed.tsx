@@ -2,9 +2,6 @@ import React, { FunctionComponent } from 'react';
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import { Typography } from '@material-ui/core';
-
 
 import * as I from '../../../../js/I'
 import * as C from '../../../../js/C'
@@ -15,11 +12,9 @@ import UnitLevel2 from '../../../images/UnitLevel2'
 import UnitLevelStar from '../../../images/UnitLevelStar'
 import Unit from './Unit'
 
-
 interface IPlayerInfoProps extends I.TCivilizationProps {
     level: number
 }
-
 
 const defaultIProps = {
     style: { fontSize: 10 },

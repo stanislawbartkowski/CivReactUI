@@ -10,7 +10,6 @@ import * as I from '../../../../js/I'
 import Resource from './Resource'
 import ListOfResources from './ListOfResources'
 
-
 interface IResourcePane {
     resources: any,
     hutvillages: any
@@ -67,7 +66,7 @@ const ResourcePane: FunctionComponent<IResourcePane> = (props) => {
     return <React.Fragment>
         <Box onClick={handleClickOpen} >
             {C.range(resouf.length).map(i => (
-                <StyledBadge badgeContent={resouf[i].num} color="primary">
+                <StyledBadge key={i} badgeContent={resouf[i].num} color="primary">
                     <Resource key={i} data={resouf[i].resource} />
                 </StyledBadge>
             ))}

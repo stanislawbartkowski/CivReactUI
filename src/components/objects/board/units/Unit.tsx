@@ -5,17 +5,13 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Typography } from '@material-ui/core';
 
-
 import * as I from '../../../../js/I'
 import * as C from '../../../../js/C'
 
-import Infantry from '../../../images/Infantry'
-import Mounted from '../../../images/Mounted'
-import Artillery from '../../../images/Artillery'
-import Aircraft from '../../../images/Aircraft'
+import getUnit from './getUnit'
 
 const defaultIProps = {
-    style: { fontSize: 48 },
+    style: { fontSize: 48 }
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -43,12 +39,8 @@ const Unit: FunctionComponent<I.TCivilizationProps> = (props) => {
     const list = unit.strength
 
 
-    let Res: FunctionComponent<I.TSvgComponent> = Infantry;
-    switch (name) {
-        case "Artillery": Res = Artillery; break;
-        case "Aircraft": Res = Aircraft; break;
-        case "Mounted": Res = Mounted; break;
-    }
+    const Res: FunctionComponent<I.TSvgComponent> = getUnit(name)
+
     const unitimage = <Res props={defaultIProps} />
 
     const strength = <Grid item direction="column" spacing={4}>
