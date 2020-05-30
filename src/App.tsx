@@ -23,6 +23,9 @@ import {refresh_board } from './store/boardactions/actions'
 import Test8 from './test/Test8'
 import Test9 from './test/Test9'
 import Test10 from './test/Test10'
+import Test11 from './test/Test11'
+import Test12 from './test/Test12'
+import Test13 from './test/Test13'
 
 import { createMuiTheme } from '@material-ui/core/styles';
 import { Theme } from '@material-ui/core/styles';

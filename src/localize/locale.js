@@ -32,7 +32,8 @@ let strings = new LocalizedStrings({
         handsize : "Hand size",
         travelspeed : "Travel speed",
         stacklimit : "Stack limit",
-        combatbonus : "Combat bonus"
+        combatbonus : "Combat bonus",
+        button_setcapital : "Build capital"
     }
 });
 

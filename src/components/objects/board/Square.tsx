@@ -21,7 +21,7 @@ const defaultProps = {
     borderColor: 'text.primary',
     m: 0,
     border: 0.1,
-    style: { width: 60, height: 45 },
+    style: { width: 65, height: 50 },
     position: "relative"
 };
 
