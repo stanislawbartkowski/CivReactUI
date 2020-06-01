@@ -18,7 +18,7 @@ import {refresh_board } from './store/boardactions/actions'
 //import Test3 from './test/Test3'
 //import Test4 from './test/Test4'
 //import Test5 from './test/Test5'
-//import Test6 from './test/Test6'
+import Test6 from './test/Test6'
 //import Test7 from './test/Test7'
 import Test8 from './test/Test8'
 import Test9 from './test/Test9'
@@ -63,7 +63,7 @@ const App: React.FC = () => {
   const confirm = useConfirm();
   C.setConfirm(confirm);
 
-  return <Test8 />
+  return <Test6 />
 }
 
 export default App;

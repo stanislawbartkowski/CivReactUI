@@ -20,7 +20,7 @@ export const refresh_board = (token: string) => {
             const board = res.data
             // the empty string means that board has not changed since the previous call
             if (board != "")
-                dispatch(game_board(board, token));
+                dispatch(game_board(board.board, token));
         });
     }
 }

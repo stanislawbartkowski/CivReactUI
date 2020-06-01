@@ -4,7 +4,7 @@ import { useConfirm, ConfirmProvider } from 'material-ui-confirm';
 import Grid from '@material-ui/core/Grid';
 
 import * as C from '../js/C'
-import Square from '../components/objects/board/Square'
+import Square from '../components/objects/board/square/Square'
 
 
 const Test6: React.FC = () => {
@@ -96,7 +96,7 @@ const Test6: React.FC = () => {
       const s4 = {
         "revealed" : true,
         "terrain" : "Water",
-        "trade" : 0,
+        "trade" : 2,
         "production" : 0,
         "resource" : "Silk",
         "capciv" : "China",
@@ -117,8 +117,8 @@ const Test6: React.FC = () => {
       const s5 = {
         "revealed" : true,
         "terrain" : "Water",
-        "trade" : 0,
-        "production" : 0,
+        "trade" : 1,
+        "production" : 2,
         "resource" : "Incense",
         "capciv" : "China",
         "civ" : null,
@@ -136,6 +136,26 @@ const Test6: React.FC = () => {
       }
 
 
+      const s6 = {
+        "revealed": true,
+        "terrain": "Desert",
+        "trade": 1,
+        "production": 5,
+        "resource": null,
+        "capciv": "China",
+        "civ": "China",
+        "city": "WalledCapital",
+        "defence": 16,
+        "numberofArmies": -1,
+        "numberofScouts": -1,
+        "tile": "RTILECHINA.json",
+        "hv": null,
+        "building": null,
+        "wonder": null,
+        "culture": 3,
+        "greatperson": null,
+        "greatpersontype": null
+      }
 
 
       const sempty = {
@@ -151,6 +171,7 @@ const Test6: React.FC = () => {
                 <Square data={s4} />
                 <Square data={s5} />
                 <Square data={sempty} />
+                <Square data={s6} />
             </Grid>
     );
 }
