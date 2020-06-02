@@ -157,6 +157,71 @@ const Test6: React.FC = () => {
         "greatpersontype": null
       }
 
+      const s7 = {
+        "revealed": true,
+        "terrain": "Desert",
+        "trade": 1,
+        "production": 5,
+        "resource": null,
+        "capciv": "China",
+        "civ": "China",
+        "city": "City",
+        "defence": 16,
+        "numberofArmies": -1,
+        "numberofScouts": -1,
+        "tile": "RTILECHINA.json",
+        "hv": null,
+        "building": null,
+        "wonder": null,
+        "culture": 7,
+        "greatperson": null,
+        "greatpersontype": null
+      }
+
+      const s8 = 
+      {
+        "revealed": true,
+        "terrain": "Mountain",
+        "trade": 2,
+        "production": 1,
+        "resource": null,
+        "capciv": "China",
+        "civ": "China",
+        "city": null,
+        "defence": 0,
+        "numberofArmies": 2,
+        "numberofScouts": 0,
+        "tile": "RTILECHINA.json",
+        "hv": null,
+        "building": null,
+        "wonder": null,
+        "culture": 0,
+        "greatperson": null,
+        "greatpersontype": null
+      }
+
+      const s9 = 
+      {
+        "revealed": true,
+        "terrain": "Mountain",
+        "trade": 2,
+        "production": 1,
+        "resource": null,
+        "capciv": "China",
+        "civ": "China",
+        "city": null,
+        "defence": 0,
+        "numberofArmies": 0,
+        "numberofScouts": 1,
+        "tile": "RTILECHINA.json",
+        "hv": null,
+        "building": null,
+        "wonder": null,
+        "culture": 0,
+        "greatperson": null,
+        "greatpersontype": null
+      }
+
 
       const sempty = {
         "revealed" : false
@@ -172,6 +237,9 @@ const Test6: React.FC = () => {
                 <Square data={s5} />
                 <Square data={sempty} />
                 <Square data={s6} />
+                <Square data={s7} />
+                <Square data={s8} />
+                <Square data={s9} />
             </Grid>
     );
 }

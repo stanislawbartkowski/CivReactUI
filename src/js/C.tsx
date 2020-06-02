@@ -126,6 +126,16 @@ export function getColor(civ : string) : string {
     return red[600];
 }
 
+/**
+ * Get color for city or capital for the player
+ *   civ : civilization, the color should be different for you and opponent
+ *   return : color
+ */
+export function getCityColor(civ : string) : string {
+    return red[100];
+}
+
+
 /** 
  * Get military strength for a branch
  * strenght : list of military branch and strength

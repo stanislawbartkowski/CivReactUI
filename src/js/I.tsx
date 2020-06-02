@@ -14,6 +14,12 @@ export interface TCivilizationProps {
     className?: string,
 }
 
+export interface ITradeProd {
+    num: number,
+    tradeprod: FunctionComponent,
+    className: string
+}
+
 export type Pos = { row: number, col: number };
 
 export type ResourceT = { resource: string, hv: string };

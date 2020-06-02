@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
 import Badge from '@material-ui/core/Badge';
+
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 import grey from '@material-ui/core/colors/grey';
@@ -18,6 +18,13 @@ import getResource from '../resources/getResource'
 import Production from '../../../images/Production'
 import Trade from '../../../images/Trade'
 import Shield from '../../../images/Shield'
+import Culture from '../../../images/Culture'
+import Army from '../../../images/Army'
+import Scout from '../../../images/Scout'
+
+import CityProd from './CityProd'
+import ProdTradeStack from './ProdTradeStack'
+import Figure from './Figure'
 
 import * as I from '../../../../js/I';
 import * as C from '../../../../js/C';
@@ -37,7 +44,23 @@ const defaultIProps = {
     style: { fontSize: 13 },
 }
 
-
+const useCityStyles = (color: string) => makeStyles((theme: Theme) =>
+    createStyles({
+        City: {
+            backgroundSize: "60% 90%",
+            backgroundImage: `url(${City})`,
+            backgroundColor: color,
+            backgroundRepeat: "no-repeat"
+        },
+        Capital: {
+            backgroundSize: "60% 100%",
+            backgroundImage: `url(${Capital})`,
+            backgroundColor: color,
+            backgroundRepeat: "no-repeat"
+        },
+    }
+    )
+)
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -71,17 +94,6 @@ const useStyles = makeStyles((theme: Theme) =>
             backgroundImage: `url(${Forest})`,
             backgroundColor: "ForestGreen"
         },
-        City: {
-            backgroundSize: "90% 90%",
-            backgroundImage: `url(${City})`,
-            backgroundColor: "#d1e8d1"
-        },
-        Capital: {
-            backgroundSize: "60% 100%",
-            backgroundImage: `url(${Capital})`,
-            backgroundColor: "#d1e8d1",
-            backgroundRepeat: "no-repeat"
-        },
         Resource: {
             left: "44px",
             top: "30px",
@@ -97,74 +109,68 @@ const useStyles = makeStyles((theme: Theme) =>
             bottom: "7px",
             position: "absolute"
         },
-        item: {
-            height: "10px"
-        },
         defence: {
             position: "absolute",
-            top: "8px",
-            right: "5px"
+            top: "2px",
+            right: "2px",
+            fontSize: "70%",
         },
         cityproduction: {
             position: "absolute",
-            bottom: "8px",
-            right: "5px"
-        }
-
+            bottom: "2px",
+            right: "2px",
+            fontSize: "70%",
+        },
+        cityculture: {
+            position: "absolute",
+            bottom: "15px",
+            right: "2px",
+            fontSize: "70%",
+        },
     },
 
     ),
 );
 
-interface ITradeProd {
-    num: number,
-    tradeprod: FunctionComponent,
-    className: string
-}
-
-const defaultTProps = {
-    style: { fontSize: 10 },
-}
-
-const propCityIcon = {
-    style: { fontSize: 14 },
-}
-
-const ProdTradeStack: FunctionComponent<ITradeProd> = (props) => {
-    const num = props.num
-    const classes = useStyles();
-    const TradeProd: FunctionComponent<I.TSvgComponent> = props.tradeprod
-    return <Grid direction="column" className={props.className} >
-        {C.range(num).map(i => (
-            <Grid item xs={5} className={classes.item}><TradeProd key={i} props={defaultTProps} /></Grid>
-        ))} </Grid>
-}
-
-const CityProd: FunctionComponent<ITradeProd> = (props) => {
-    const num = props.num
-    const classes = useStyles();
-    const TradeProd: FunctionComponent<I.TSvgComponent> = props.tradeprod
-
-    return <Badge badgeContent={num} className={props.className} color="primary">
-        <TradeProd props={propCityIcon} />
-    </Badge>
-}
-
+const useFigureStyles = (color: string) => makeStyles((theme: Theme) =>
+    createStyles({
+        army: {
+            right: "8px",
+            bottom: "7px",
+            position: "absolute",
+            color: color
+        },
+        scout: {
+            left: "1px",
+            bottom: "7px",
+            position: "absolute",
+            color: color
+        },
+    }
+    )
+)
 
 const Square: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
 
     const classes = useStyles();
+    const cityclasses = useCityStyles(C.getCityColor(data.civ))()
+    const figureclasses = useFigureStyles(C.getColor(data.civ))()
     let cl: string = "";
     let resource = null;
     let prod = null
     let trade = null
     let defence = null
+    let culture = null
+    let armies = null
+    let scouts = null
     if (!data.revealed) cl = classes.NotRevealed
+    else 
     if (data.city != null) {
-        if (data.city == "Capital" || data.city == "WalledCapital") cl = classes.Capital
-        else cl = classes.City
+        if (data.city == "Capital" || data.city == "WalledCapital") cl = cityclasses.Capital
+        else cl = cityclasses.City
         defence = <CityProd num={data.defence} tradeprod={Shield} className={classes.defence} />
         prod = <CityProd num={data.production} tradeprod={Production} className={classes.cityproduction} />
+        culture = <CityProd num={data.culture} tradeprod={Culture} className={classes.cityculture} />
     }
     else {
         switch (data.terrain) {
@@ -185,7 +191,12 @@ const Square: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
         if (data.trade > 0) {
             trade = <ProdTradeStack num={data.trade} tradeprod={Trade} className={classes.trade} />
         }
-
+        if (data.numberofArmies > 0) {
+            armies = <Figure num={data.numberofArmies} tradeprod={Army} className={figureclasses.army} />
+        }
+        if (data.numberofScouts > 0) {
+            scouts = <Figure num={data.numberofScouts} tradeprod={Scout} className={figureclasses.scout} />
+        }
     }
 
     return (
@@ -194,6 +205,9 @@ const Square: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
             {prod}
             {trade}
             {defence}
+            {culture}
+            {armies}
+            {scouts}
         </Box>
     );
 }
