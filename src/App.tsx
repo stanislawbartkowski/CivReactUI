@@ -63,7 +63,7 @@ const App: React.FC = () => {
   const confirm = useConfirm();
   C.setConfirm(confirm);
 
-  return <Test6 />
+  return <Test10 />
 }
 
 export default App;

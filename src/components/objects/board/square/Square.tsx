@@ -6,6 +6,7 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 import grey from '@material-ui/core/colors/grey';
 
+// Terrains
 import Grassland from '../../../../resources/images/terrain/grassland.svg'
 import Mountain from '../../../../resources/images/terrain/mountain.svg'
 import Desert from '../../../../resources/images/terrain/desert.svg'
@@ -13,6 +14,25 @@ import Forest from '../../../../resources/images/terrain/forest.svg'
 import Water from '../../../../resources/images/terrain/water.svg'
 import City from '../../../../resources/images/cities/city.svg'
 import Capital from '../../../../resources/images/cities/capital.svg'
+
+// Buildings
+import Academy from '../../../../resources/images/buildings/academy.svg'
+import Aqueduct from '../../../../resources/images/buildings/aqueduct.svg'
+import Bank from '../../../../resources/images/buildings/bank.svg'
+import Barracks from '../../../../resources/images/buildings/barracks.svg'
+import Cathedral from '../../../../resources/images/buildings/cathedral.svg'
+import Granary from '../../../../resources/images/buildings/granary.svg'
+import Harbor from '../../../../resources/images/buildings/harbor.svg'
+import Ironmine from '../../../../resources/images/buildings/ironmine.svg'
+import Library from '../../../../resources/images/buildings/library.svg'
+import Market from '../../../../resources/images/buildings/market.svg'
+import Shipyard from '../../../../resources/images/buildings/shipyard.svg'
+import Temple from '../../../../resources/images/buildings/temple.svg'
+import Tradingpost from '../../../../resources/images/buildings/tradingpost.svg'
+import University from '../../../../resources/images/buildings/university.svg'
+import Workshop from '../../../../resources/images/buildings/workshop.svg'
+
+
 
 import getResource from '../resources/getResource'
 import Production from '../../../images/Production'
@@ -64,6 +84,7 @@ const useCityStyles = (color: string) => makeStyles((theme: Theme) =>
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        // Terrains
         NotRevealed: {
             borderColor: grey[300],
             backgroundSize: "100% 100%",
@@ -94,11 +115,104 @@ const useStyles = makeStyles((theme: Theme) =>
             backgroundImage: `url(${Forest})`,
             backgroundColor: "ForestGreen"
         },
+        // Buildings
+        Academy: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Academy})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Aqueduct: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Aqueduct})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Bank: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Bank})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Barracks: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Barracks})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Cathedral: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Cathedral})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Granary: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Granary})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Harbor: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Harbor})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Ironmine: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Ironmine})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Library: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Library})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Market: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Market})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Shipyard: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Shipyard})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Temple: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Temple})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Tradingpost: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Tradingpost})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        University: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${University})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        Workshop: {
+            backgroundSize: "90% 90%",
+            backgroundImage: `url(${Workshop})`,
+            backgroundColor: "#f5f3e8",
+            backgroundRepeat: "no-repeat"
+        },
+        // Resource
         Resource: {
             left: "44px",
             top: "30px",
             position: "absolute"
         },
+        // Capacity
         production: {
             right: "0px",
             bottom: "7px",
@@ -107,6 +221,11 @@ const useStyles = makeStyles((theme: Theme) =>
         trade: {
             left: "4px",
             bottom: "7px",
+            position: "absolute"
+        },
+        culture: {
+            left: "4px",
+            top: "0px",
             position: "absolute"
         },
         defence: {
@@ -156,6 +275,7 @@ const Square: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
     const cityclasses = useCityStyles(C.getCityColor(data.civ))()
     const figureclasses = useFigureStyles(C.getColor(data.civ))()
     let cl: string = "";
+    let resourceSquare: string = ""
     let resource = null;
     let prod = null
     let trade = null
@@ -163,40 +283,77 @@ const Square: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
     let culture = null
     let armies = null
     let scouts = null
+    let tradeNumber: number = 0
+    let productionNumber: number = 0
+    let cultureNumber: number = 0
     if (!data.revealed) cl = classes.NotRevealed
-    else 
-    if (data.city != null) {
-        if (data.city == "Capital" || data.city == "WalledCapital") cl = cityclasses.Capital
-        else cl = cityclasses.City
-        defence = <CityProd num={data.defence} tradeprod={Shield} className={classes.defence} />
-        prod = <CityProd num={data.production} tradeprod={Production} className={classes.cityproduction} />
-        culture = <CityProd num={data.culture} tradeprod={Culture} className={classes.cityculture} />
-    }
-    else {
-        switch (data.terrain) {
-            case "Grassland": cl = classes.Grassland; break;
-            case "Mountain": cl = classes.Mountain; break;
-            case "Forest": cl = classes.Forest; break;
-            case "Desert": cl = classes.Desert; break;
-            case "Water": cl = classes.Water; break;
+    else
+        if (data.city != null) {
+            if (data.city == "Capital" || data.city == "WalledCapital") cl = cityclasses.Capital
+            else cl = cityclasses.City
+            defence = <CityProd num={data.defence} tradeprod={Shield} className={classes.defence} />
+            prod = <CityProd num={data.production} tradeprod={Production} className={classes.cityproduction} />
+            culture = <CityProd num={data.culture} tradeprod={Culture} className={classes.cityculture} />
         }
+        else
+            if (data.building != null) {
+                const building = C.getBuilding(data.building)
+                productionNumber = building.tokens.Production
+                tradeNumber = building.tokens.Trade
+                cultureNumber = building.tokens.Culture
+                if (building.tokens.Coin > 0) resourceSquare = "Coin"
 
-        if (data.resource) {
-            let Res = getResource(data.resource)
-            resource = <div><Res className={classes.Resource} props={defaultIProps} /></div>
-        }
-        if (data.production > 0) {
-            prod = <ProdTradeStack num={data.production} tradeprod={Production} className={classes.production} />
-        }
-        if (data.trade > 0) {
-            trade = <ProdTradeStack num={data.trade} tradeprod={Trade} className={classes.trade} />
-        }
-        if (data.numberofArmies > 0) {
-            armies = <Figure num={data.numberofArmies} tradeprod={Army} className={figureclasses.army} />
-        }
-        if (data.numberofScouts > 0) {
-            scouts = <Figure num={data.numberofScouts} tradeprod={Scout} className={figureclasses.scout} />
-        }
+                switch (data.building) {
+                    case "Academy": cl = classes.Academy; break;
+                    case "Aqueduct": cl = classes.Aqueduct; break;
+                    case "Bank": cl = classes.Bank; break;
+                    case "Barracks": cl = classes.Barracks; break;
+                    case "Cathedral": cl = classes.Cathedral; break;
+                    case "Granary": cl = classes.Granary; break;
+                    case "Harbor": cl = classes.Harbor; break;
+                    case "Ironmine": cl = classes.Ironmine; break;
+                    case "Library": cl = classes.Library; break;
+                    case "Market": cl = classes.Market; break;
+                    case "Shipyard": cl = classes.Shipyard; break;
+                    case "Temple": cl = classes.Temple; break;
+                    case "Tradingpost": cl = classes.Tradingpost; break;
+                    case "University": cl = classes.University; break;
+                    case "Workshop": cl = classes.Workshop; break;
+                } // switch
+            }
+            else {
+                switch (data.terrain) {
+                    case "Grassland": cl = classes.Grassland; break;
+                    case "Mountain": cl = classes.Mountain; break;
+                    case "Forest": cl = classes.Forest; break;
+                    case "Desert": cl = classes.Desert; break;
+                    case "Water": cl = classes.Water; break;
+                }
+
+                resourceSquare = data.resource
+                productionNumber = data.production
+                tradeNumber = data.trade
+                cultureNumber = data.culture
+                if (data.numberofArmies > 0) {
+                    armies = <Figure num={data.numberofArmies} tradeprod={Army} className={figureclasses.army} />
+                }
+                if (data.numberofScouts > 0) {
+                    scouts = <Figure num={data.numberofScouts} tradeprod={Scout} className={figureclasses.scout} />
+                }
+            }
+
+    if (productionNumber > 0) {
+        prod = <ProdTradeStack num={productionNumber} tradeprod={Production} className={classes.production} />
+    }
+    if (tradeNumber > 0) {
+        trade = <ProdTradeStack num={tradeNumber} tradeprod={Trade} className={classes.trade} />
+    }
+    if (cultureNumber > 0) {
+        culture = <ProdTradeStack num={cultureNumber} tradeprod={Culture} className={classes.culture} />
+    }
+    if (resourceSquare != "" && resourceSquare != null) {
+        let Res = getResource(resourceSquare)
+        resource = <div><Res className={classes.Resource} props={defaultIProps} /></div>
     }
 
     return (

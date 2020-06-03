@@ -25,7 +25,7 @@ export function tstoDate(ts: number): string {
     return date.toLocaleString()
 }
 
-export function internalerrorlog(mess : string) {
+export function internalerrorlog(mess: string) {
     log("Internal error :" + mess)
 }
 
@@ -81,6 +81,22 @@ export function getCivShort(civ: string): string {
     return civ[0] + civ[1];
 }
 
+/** getBuilding */
+
+function lookupByName(list: Array<any>, name: string, err: string): any {
+    const f = list.find(e => e.name == name)
+    if (f == null) {
+        internalerrorlog(name + " " + err)
+        return null
+    }
+    return f
+}
+
+export function getBuilding(building: string): any {
+    const buildings: Array<any> = GR().buildings
+    return lookupByName(buildings, building, "cannot find this building")
+}
+
 // game board related functions
 
 /** calculates the dimension of the board */
@@ -105,15 +121,15 @@ export function range(size: number): ReadonlyArray<number> {
  * dim : dimension of the board, numer of rows and columns
  * return: gameboard coordinates
 */
-export function gtoB(pos : I.Pos, dim : I.Pos) : I.Pos {
+export function gtoB(pos: I.Pos, dim: I.Pos): I.Pos {
 
-    return { row : dim.row - pos.row - 1, col: pos.col};
+    return { row: dim.row - pos.row - 1, col: pos.col };
 }
 
-export function getSquare(map : any, pos : I.Pos) {
-    const ma : Array<any>  = map
-    const row : Array<any> = ma[pos.row]
-    const da : any = row[pos.col]
+export function getSquare(map: any, pos: I.Pos) {
+    const ma: Array<any> = map
+    const row: Array<any> = ma[pos.row]
+    const da: any = row[pos.col]
     return da
 }
 
@@ -122,7 +138,7 @@ export function getSquare(map : any, pos : I.Pos) {
  *   civ : civilization, the color should be different for you and opponent
  *   return : color
  */
-export function getColor(civ : string) : string {
+export function getColor(civ: string): string {
     return red[600];
 }
 
@@ -131,7 +147,7 @@ export function getColor(civ : string) : string {
  *   civ : civilization, the color should be different for you and opponent
  *   return : color
  */
-export function getCityColor(civ : string) : string {
+export function getCityColor(civ: string): string {
     return red[100];
 }
 
@@ -142,11 +158,8 @@ export function getCityColor(civ : string) : string {
  * branch : military branch to be looked for
  * return : military strength
  */
-export function getStrength(strength : Array<any>, branch : string) : number {
-    const f = strength.find(e => e.name == branch)
-    if (f == null) {
-        internalerrorlog(branch + " cannot find this branch")
-        return 0
-    }
-    return f.militarystrength   
+export function getStrength(strength: Array<any>, branch: string): number {
+    const f = lookupByName(strength, branch, "cannot find this branch")
+    if (f == null) return 0
+    return f.militarystrength
 }

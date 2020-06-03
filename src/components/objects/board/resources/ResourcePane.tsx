@@ -53,7 +53,8 @@ const ResourcePane: FunctionComponent<IResourcePane> = (props) => {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = (props: any) => {
-        if (hvlist.length > 0) setOpen(true);
+        const name: string = props.resource
+        if ((name == "Hut" || name == "Village") && hvlist.length > 0) setOpen(true);
     };
 
     const handleClose = () => {
@@ -64,10 +65,10 @@ const ResourcePane: FunctionComponent<IResourcePane> = (props) => {
     const resouf = resou.filter(e => e.num > 0).concat(extractHv(hv))
 
     return <React.Fragment>
-        <Box onClick={handleClickOpen} >
+        <Box >
             {C.range(resouf.length).map(i => (
-                <StyledBadge key={i} badgeContent={resouf[i].num} color="primary">
-                    <Resource key={i} data={resouf[i].resource} />
+                <StyledBadge onClick={() => handleClickOpen(resouf[i])} key={i} badgeContent={resouf[i].num} color="primary">
+                    <Resource data={resouf[i].resource} />
                 </StyledBadge>
             ))}
         </Box>
