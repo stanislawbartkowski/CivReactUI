@@ -26,7 +26,7 @@ const ProdTradeStack: FunctionComponent<I.ITradeProd> = (props) => {
     const TradeProd: FunctionComponent<I.TSvgComponent> = props.tradeprod
     return <Grid direction="column" className={props.className} >
         {C.range(num).map(i => (
-            <Grid item xs={5} className={classes.item}><TradeProd key={i} props={defaultTProps} /></Grid>
+            <Grid key={i} item xs={5} className={classes.item}><TradeProd props={defaultTProps} /></Grid>
         ))} </Grid>
 }
 

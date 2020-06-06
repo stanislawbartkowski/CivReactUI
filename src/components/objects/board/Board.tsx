@@ -11,15 +11,8 @@ import GameResources from './GameResources'
 
 import * as I from '../../../js/I'
 
-
-const leftmenufun: FunctionComponent<I.TCivilizationProps> = (props) => {
-
-    return <div>AAAA</div>
-}
-
 const Board: FunctionComponent<I.TCivilizationProps> = (props) => {
 
-    //    const board = data.data.board;
     const board = props.data;
     const map = board.map;
     const game = board.game;

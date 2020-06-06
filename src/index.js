@@ -17,18 +17,19 @@ import reducerRG from './store/resumegamepanel/reducer'
 import reducerTL from './store/toplabel/reducer'
 import reducerCV from './store/civclicked/reducer'
 import reducerBO from './store/boardactions/reducer'
+import reducerIT from './store/itemizeaction/reducer'
 
 const theme = createMuiTheme();
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-
 const rootStore = combineReducers({
     newpanel: reducerNG,
     resumepanel: reducerRG,
     toplabel: reducerTL,
-    clickciv : reducerCV,
-    gameboard : reducerBO
+    clickciv: reducerCV,
+    gameboard: reducerBO,
+    itemize: reducerIT
 })
 
 const store = createStore(rootStore, composeEnhancer(applyMiddleware(thunk)));

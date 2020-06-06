@@ -4,6 +4,10 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { useDispatch } from 'react-redux';
+
+import {itemizedCommand} from '../../../store/itemizeaction/actions'
+
 import civstring from '../../../localize/locale'
 import Capital from '../../images/Capital'
 
@@ -30,11 +34,16 @@ function getButtonIcon (command: string) : FunctionComponent<I.TSvgComponent> {
 const CommandButton: FunctionComponent<CommandGame> = (props) => {
 
     const classes = useStyles();
-
-    const command : string = civstring("button_"+props.command.toLowerCase())
+    const dispatch = useDispatch();
+    const commandid = props.command;
+    const command : string = civstring("button_"+commandid.toLowerCase())
     const Ico : FunctionComponent<I.TSvgComponent> = getButtonIcon(command)
 
-    return <Button className={classes.button} size="small" variant="contained" color="primary" startIcon={<Ico/>}>{command}</Button>
+    const handleClick = () => {
+      dispatch(itemizedCommand(commandid));
+    }
+
+    return <Button onClick={handleClick} className={classes.button} size="small" variant="contained" color="primary" startIcon={<Ico/>}>{command}</Button>
 }
 
 
@@ -44,7 +53,7 @@ const CommandPane: FunctionComponent<I.TCivilizationProps> = (props) => {
 
     return <Box><Grid container>
         {C.range(command.length).map(i => (
-            <CommandButton key={i} command={command[i].command} />
+            <CommandButton key={i} command={command[i].command}/>
         ))}
     </Grid>
     </Box>

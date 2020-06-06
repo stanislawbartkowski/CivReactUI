@@ -1,15 +1,16 @@
 import React from 'react';
 import './App.css';
 
+
+import * as C from './js/C'
+
 import { BrowserRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 
 import FrontPanel from './components/panel/frontpanel/FrontPanel';
 import PopUps from './components/popups/PopUps'; 
 
-
-import * as actions from './store//newgamepanel/actions'
-import * as C from './js/C'
+import * as actions from './store/newgamepanel/actions'
 import {refresh_board } from './store/boardactions/actions'
 
 
@@ -34,7 +35,7 @@ import { useConfirm } from 'material-ui-confirm';
 
 const theme: Theme = createMuiTheme();
 
-const XApp: React.FC = () => {
+const App: React.FC = () => {
 
   const dispatch = useDispatch();
 
@@ -58,7 +59,7 @@ const XApp: React.FC = () => {
   );
 }
 
-const App: React.FC = () => {
+const XApp: React.FC = () => {
 
   const confirm = useConfirm();
   C.setConfirm(confirm);
