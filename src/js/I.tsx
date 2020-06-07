@@ -14,6 +14,10 @@ export interface TCivilizationProps {
     className?: string,
 }
 
+export interface TCivilizationPropsHighlight extends TCivilizationProps {
+    highlight? : Array<Pos>
+}
+
 export interface ITradeProd {
     num: number,
     tradeprod: FunctionComponent,

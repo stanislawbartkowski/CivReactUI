@@ -133,6 +133,18 @@ export function getSquare(map: any, pos: I.Pos) {
     return da
 }
 
+function eqP(p1 : I.Pos, p2: I.Pos) : boolean {
+    return p1.row == p2.row && p1.col == p2.col
+}
+
+export function onhighlightList(pos : I.Pos, hightlight : Array<I.Pos>) : boolean {
+
+    if (hightlight == null) return false
+
+    return hightlight.find(p => eqP(p,pos)) != null
+
+}
+
 /**
  * Get color for the player
  *   civ : civilization, the color should be different for you and opponent
@@ -162,4 +174,14 @@ export function getStrength(strength: Array<any>, branch: string): number {
     const f = lookupByName(strength, branch, "cannot find this branch")
     if (f == null) return 0
     return f.militarystrength
+}
+
+/**
+ * Extract itemize/highligth list of squares from itemize array
+ * command : command 
+ * itemized : itemized struxture specific to command
+ * return : array of highlight squares
+ */
+export function itemizetoHighlight(command:string, itemized:any) : Array<I.Pos> {
+    return itemized
 }

@@ -11,14 +11,14 @@ import GameResources from './GameResources'
 
 import * as I from '../../../js/I'
 
-const Board: FunctionComponent<I.TCivilizationProps> = (props) => {
+const Board: FunctionComponent<I.TCivilizationPropsHighlight> = (props) => {
 
     const board = props.data;
     const map = board.map;
     const game = board.game;
     const you = board.you
     const main: ReactElement = <Box display="flex" >
-        <GameMap data={map} />
+        <GameMap data={map} highlight={props.highlight} />
         <GameResources data={board} />
     </Box>
     const leftmenu = <PlayerControl data={you} />

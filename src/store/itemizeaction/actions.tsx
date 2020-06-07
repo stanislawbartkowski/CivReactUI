@@ -1,18 +1,11 @@
 import axios from '../../axios';
 
-import * as civdataactions from '../../js/restapi';
 import * as C from '../../js/C'
 
 export const ITEMIZE_COMMAND: string = "ITEMIZE_COMMAND";
 export const ITEMIZE_NONE: string = "ITEMIZE_NONE";
 
-export type ItemizedCommand = {
-    type : string,
-    command : string,
-    itemized : any
-}
-
-const itemized_command = (command : string, itemized : any) : ItemizedCommand => {
+const itemized_command = (command : string, itemized : any) => {
     return {
         type : ITEMIZE_COMMAND,
         command : command,

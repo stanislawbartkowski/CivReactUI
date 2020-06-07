@@ -1,10 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import Box from '@material-ui/core/Box';
-import Badge from '@material-ui/core/Badge';
 
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 import grey from '@material-ui/core/colors/grey';
+import red from '@material-ui/core/colors/red';
+import yellow from '@material-ui/core/colors/yellow';
+
 
 // Terrains
 import Grassland from '../../../../resources/images/terrain/grassland.svg'
@@ -49,10 +51,14 @@ import Figure from './Figure'
 import * as I from '../../../../js/I';
 import * as C from '../../../../js/C';
 
+interface ISquare extends I.TCivilizationProps {
+    highlight?: boolean
+    pos? : I.Pos
+}
+
 
 const defaultProps = {
     bgcolor: 'background.paper',
-    borderColor: 'text.primary',
     m: 0,
     border: 0.1,
     style: { width: 65, height: 50 },
@@ -269,7 +275,7 @@ const useFigureStyles = (color: string) => makeStyles((theme: Theme) =>
     )
 )
 
-const Square: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
+const Square: FunctionComponent<ISquare> = ({ data, highlight, pos }) => {
 
     const classes = useStyles();
     const cityclasses = useCityStyles(C.getCityColor(data.civ))()
@@ -356,8 +362,11 @@ const Square: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
         resource = <div><Res className={classes.Resource} props={defaultIProps} /></div>
     }
 
+
+    const bradius = highlight ? "35%" : "0%"
+
     return (
-        <Box className={cl} component="div" {...defaultProps}>
+        <Box className={cl} component="div" {...defaultProps} borderRadius={bradius}>
             {resource}
             {prod}
             {trade}

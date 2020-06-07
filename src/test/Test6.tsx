@@ -300,7 +300,7 @@ const Test6: React.FC = () => {
     <Grid container direction="row" spacing={0}>
       <Square data={s1} />
       <Square data={s} />
-      <Square data={s2} />
+      <Square data={s2} highlight />
       <Square data={s3} />
       <Square data={s4} />
       <Square data={s5} />

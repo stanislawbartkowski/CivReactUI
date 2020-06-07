@@ -64,7 +64,7 @@ const XApp: React.FC = () => {
   const confirm = useConfirm();
   C.setConfirm(confirm);
 
-  return <Test10 />
+  return <Test6 />
 }
 
 export default App;
