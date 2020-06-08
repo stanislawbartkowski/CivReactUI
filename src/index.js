@@ -18,6 +18,7 @@ import reducerTL from './store/toplabel/reducer'
 import reducerCV from './store/civclicked/reducer'
 import reducerBO from './store/boardactions/reducer'
 import reducerIT from './store/itemizeaction/reducer'
+import reducerCO from './store/commandactions/reducer'
 
 const theme = createMuiTheme();
 
@@ -29,7 +30,8 @@ const rootStore = combineReducers({
     toplabel: reducerTL,
     clickciv: reducerCV,
     gameboard: reducerBO,
-    itemize: reducerIT
+    itemize: reducerIT,
+    command : reducerCO
 })
 
 const store = createStore(rootStore, composeEnhancer(applyMiddleware(thunk)));

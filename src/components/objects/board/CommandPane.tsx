@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import { useDispatch } from 'react-redux';
 
 import {itemizedCommand} from '../../../store/itemizeaction/actions'
+import {commandNone} from '../../../store/commandactions/actions'
 
 import civstring from '../../../localize/locale'
 import Capital from '../../images/Capital'
@@ -36,11 +37,12 @@ const CommandButton: FunctionComponent<CommandGame> = (props) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const commandid = props.command;
-    const command : string = civstring("button_"+commandid.toLowerCase())
+    const command : string = C.commandText(commandid)
     const Ico : FunctionComponent<I.TSvgComponent> = getButtonIcon(command)
 
     const handleClick = () => {
       dispatch(itemizedCommand(commandid));
+      dispatch(commandNone());
     }
 
     return <Button onClick={handleClick} className={classes.button} size="small" variant="contained" color="primary" startIcon={<Ico/>}>{command}</Button>

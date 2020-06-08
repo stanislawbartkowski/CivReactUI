@@ -185,3 +185,10 @@ export function getStrength(strength: Array<any>, branch: string): number {
 export function itemizetoHighlight(command:string, itemized:any) : Array<I.Pos> {
     return itemized
 }
+
+/**
+ * Get command name
+ */
+export function commandText(command : string) : string {
+    return civstring("button_"+command.toLowerCase())
+}

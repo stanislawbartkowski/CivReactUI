@@ -1,29 +1,21 @@
-export const EMPTYCOMMAND: string = "EMPTY_COMMAND";
-export const PLAYCOMMAND: string = "PLAYER_COMMAND"
-
 import * as I from '../../js/I'
 
-export type PlayerCommand = {
-    command : string,
-    square : I.Pos
-}
+export const EMPTYCOMMAND: string = "EMPTY_COMMAND";
+export const SQUARECLICKED: string = "SQUARE_CLICKED"
 
-export const commandNone  = () : PlayerCommand  => {
+export const commandNone = () => {
     return {
-        command : "",
-        square : {
+        type: EMPTYCOMMAND,
+        square: {
             row: -1,
             col: -1,
         }
     }
 }
 
-export const command = (command: string) : PlayerCommand => {
+export const clicked = (square: I.Pos) => {
     return {
-        command : command,
-        square : {
-            row: -1,
-            col: -1,
-        }
+        type: SQUARECLICKED,
+        square: { ...square },
     }
 }

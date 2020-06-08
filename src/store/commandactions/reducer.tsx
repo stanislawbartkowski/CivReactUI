@@ -2,16 +2,15 @@ import { Reducer } from 'redux';
 import * as actions from './actions';
 
 const reducer: Reducer = (state = actions.commandNone, action) => {
-
     switch (action.type) {
-
-        case actions.commandNone: return {
+        case actions.SQUARECLICKED: return {
             current: action.type,
-            civ: action.civ,
-            open : action.open,
-            params : action.params
+            square: action.square
         }
-
+        case actions.EMPTYCOMMAND: return {
+            current: action.type,
+            square: null
+        }
         default: return state;
     }
 };

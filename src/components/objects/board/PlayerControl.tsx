@@ -9,6 +9,7 @@ import PlayerStatus from './PlayerStatus'
 import UnitStatus from './units/UnitsStatus'
 import ResourcePanel from './resources/ResourcePane'
 import CommandPane from './CommandPane'
+import CommandControl from './command/CommandControl'
 
 const PlayerControl: FunctionComponent<I.TCivilizationProps> = (props: any) => {
     const you = props.data;
@@ -24,6 +25,7 @@ const PlayerControl: FunctionComponent<I.TCivilizationProps> = (props: any) => {
         <PlayerStatus data={you} />
         <UnitStatus units={units} list={you.units.list} armystrength={strength} />
         <ResourcePanel resources={you.resources} hutvillages={you.hutvillages} />
+        <CommandControl />
         <CommandPane data={you.commands} />
     </Grid>
 }

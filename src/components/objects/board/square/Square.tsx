@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Box from '@material-ui/core/Box';
+import { useDispatch } from 'react-redux';
 
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
@@ -48,6 +49,7 @@ import CityProd from './CityProd'
 import ProdTradeStack from './ProdTradeStack'
 import Figure from './Figure'
 
+import {clicked} from '../../../../store/commandactions/actions'
 import * as I from '../../../../js/I';
 import * as C from '../../../../js/C';
 
@@ -277,6 +279,7 @@ const useFigureStyles = (color: string) => makeStyles((theme: Theme) =>
 
 const Square: FunctionComponent<ISquare> = ({ data, highlight, pos }) => {
 
+    const dispatch = useDispatch();
     const classes = useStyles();
     const cityclasses = useCityStyles(C.getCityColor(data.civ))()
     const figureclasses = useFigureStyles(C.getColor(data.civ))()
@@ -362,11 +365,17 @@ const Square: FunctionComponent<ISquare> = ({ data, highlight, pos }) => {
         resource = <div><Res className={classes.Resource} props={defaultIProps} /></div>
     }
 
+    const handleClick = () => {
+        // remove undefined type
+        const apos : any = pos;
+        if (highlight) dispatch(clicked(apos));
+      }
+  
 
     const bradius = highlight ? "35%" : "0%"
 
     return (
-        <Box className={cl} component="div" {...defaultProps} borderRadius={bradius}>
+        <Box onClick={handleClick} className={cl} component="div" {...defaultProps} borderRadius={bradius} >
             {resource}
             {prod}
             {trade}
