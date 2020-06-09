@@ -23,17 +23,19 @@ let strings = new LocalizedStrings({
         doyouwanttoresumetrainig: "Do you want to resume training game as {0} ?",
         activeciv: "Active",
         gamephase: "Phase",
-        roundno : "Round no",
-        trade : "Trade",
-        citylimit : "City limit",
-        armieslimit : "Armies limit",
-        scoutslimit : "Scouts limit",
-        tradeforprod : "Trade prod",
-        handsize : "Hand size",
-        travelspeed : "Travel speed",
-        stacklimit : "Stack limit",
-        combatbonus : "Combat bonus",
-        button_setcapital : "Build capital"
+        roundno: "Round no",
+        trade: "Trade",
+        citylimit: "City limit",
+        armieslimit: "Armies limit",
+        scoutslimit: "Scouts limit",
+        tradeforprod: "Trade prod",
+        handsize: "Hand size",
+        travelspeed: "Travel speed",
+        stacklimit: "Stack limit",
+        combatbonus: "Combat bonus",
+        button_setcapital: "Build capital",
+        button_setscout: "Deploy scout",
+        button_setarmy: "Deploy army"
     }
 });
 

@@ -49,13 +49,13 @@ import CityProd from './CityProd'
 import ProdTradeStack from './ProdTradeStack'
 import Figure from './Figure'
 
-import {clicked} from '../../../../store/commandactions/actions'
+import { commandClicked } from '../../../../store/commandactions/actions'
 import * as I from '../../../../js/I';
 import * as C from '../../../../js/C';
 
 interface ISquare extends I.TCivilizationProps {
     highlight?: boolean
-    pos? : I.Pos
+    pos?: I.Pos
 }
 
 
@@ -367,10 +367,10 @@ const Square: FunctionComponent<ISquare> = ({ data, highlight, pos }) => {
 
     const handleClick = () => {
         // remove undefined type
-        const apos : any = pos;
-        if (highlight) dispatch(clicked(apos));
-      }
-  
+        const apos: any = pos;
+        if (highlight) dispatch(commandClicked(apos));
+    }
+
 
     const bradius = highlight ? "35%" : "0%"
 

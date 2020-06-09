@@ -3,7 +3,7 @@ import * as I from '../../js/I'
 export const EMPTYCOMMAND: string = "EMPTY_COMMAND";
 export const SQUARECLICKED: string = "SQUARE_CLICKED"
 
-export const commandNone = () => {
+export const commandReset = () => {
     return {
         type: EMPTYCOMMAND,
         square: {
@@ -13,7 +13,7 @@ export const commandNone = () => {
     }
 }
 
-export const clicked = (square: I.Pos) => {
+export const commandClicked = (square: I.Pos) => {
     return {
         type: SQUARECLICKED,
         square: { ...square },

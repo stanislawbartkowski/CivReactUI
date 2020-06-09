@@ -5,20 +5,26 @@ import * as C from '../../js/C'
 export const ITEMIZE_COMMAND: string = "ITEMIZE_COMMAND";
 export const ITEMIZE_NONE: string = "ITEMIZE_NONE";
 
-const itemized_command = (command : string, itemized : any) => {
+const itemized_command = (command: string, itemized: any) => {
     return {
-        type : ITEMIZE_COMMAND,
-        command : command,
-        itemized : itemized
+        type: ITEMIZE_COMMAND,
+        command: command,
+        itemized: itemized
     }
 }
 
-export const itemizedCommand = (command : string) => {
+export const itemizedReset = () => {
+    return {
+        type: ITEMIZE_NONE
+    }
+}
+
+export const itemizedCommand = (command: string) => {
 
     return (dispatch: any) => {
-        axios.get('/itemize?command='+command,{ 'headers': { 'Authorization': 'Token ' + C.getToken() } }).then(res => {
+        axios.get('/itemize?command=' + command, C.getAuthHeader()).then(res => {
             C.log("Itemize command " + command)
-            dispatch(itemized_command(command,res.data))
+            dispatch(itemized_command(command, res.data))
         });
     }
 }

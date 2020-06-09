@@ -8,7 +8,7 @@ import Governance from './playercontrols/Governance'
 import PlayerStatus from './PlayerStatus'
 import UnitStatus from './units/UnitsStatus'
 import ResourcePanel from './resources/ResourcePane'
-import CommandPane from './CommandPane'
+import CommandPane from './commandpane/CommandPane'
 import CommandControl from './command/CommandControl'
 
 const PlayerControl: FunctionComponent<I.TCivilizationProps> = (props: any) => {

@@ -7,10 +7,8 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { useDispatch } from 'react-redux';
 
-import { itemizedCommand } from '../../../../store/itemizeaction/actions'
-import { commandNone } from '../../../../store/commandactions/actions'
-
-import civstring from '../../../../localize/locale'
+import { itemizedCommand, itemizedReset } from '../../../../store/itemizeaction/actions'
+import { commandReset } from '../../../../store/commandactions/actions'
 
 import * as I from '../../../../js/I'
 import * as C from '../../../../js/C'
@@ -30,7 +28,9 @@ const CommandControl: FunctionComponent = () => {
 
     if (itemizecurrent == iactions.ITEMIZE_COMMAND && clickedcurrent == cactions.SQUARECLICKED) {
         C.log("Clicked:" + command + " square:" + clickedP);
-        dispatch(commandNone());
+        dispatch(commandReset());
+        dispatch(itemizedReset())
+        C.executeCommand(command, clickedP, null)
     }
 
     if (itemizecurrent == iactions.ITEMIZE_NONE) return null;

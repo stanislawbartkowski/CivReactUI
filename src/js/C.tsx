@@ -1,6 +1,7 @@
 import civstring from "../localize/locale";
 import * as I from './I';
 import red from '@material-ui/core/colors/red';
+import axios from '../axios';
 
 export { }
 
@@ -133,15 +134,15 @@ export function getSquare(map: any, pos: I.Pos) {
     return da
 }
 
-function eqP(p1 : I.Pos, p2: I.Pos) : boolean {
+function eqP(p1: I.Pos, p2: I.Pos): boolean {
     return p1.row == p2.row && p1.col == p2.col
 }
 
-export function onhighlightList(pos : I.Pos, hightlight : Array<I.Pos>) : boolean {
+export function onhighlightList(pos: I.Pos, hightlight: Array<I.Pos>): boolean {
 
     if (hightlight == null) return false
 
-    return hightlight.find(p => eqP(p,pos)) != null
+    return hightlight.find(p => eqP(p, pos)) != null
 
 }
 
@@ -182,13 +183,37 @@ export function getStrength(strength: Array<any>, branch: string): number {
  * itemized : itemized struxture specific to command
  * return : array of highlight squares
  */
-export function itemizetoHighlight(command:string, itemized:any) : Array<I.Pos> {
+
+ function transformarmyitemized(itemized : Array<any>) : Array<I.Pos> {
+    return itemized.map(e => {return {"row" : e.param.row, "col" : e.param.col}})
+ }
+
+export function itemizetoHighlight(command: string, itemized: any): Array<I.Pos> {
+    switch (command) {
+        case "BUILDCAPITAL" :
+        case "BUILDCITY" : break
+        case "SETARMY" :
+        case "SETSCOUT": 
+        case "BUYRMY": 
+        case "BUYSCOUT" : return transformarmyitemized(itemized);
+    }
     return itemized
 }
 
 /**
  * Get command name
  */
-export function commandText(command : string) : string {
-    return civstring("button_"+command.toLowerCase())
+export function commandText(command: string): string {
+    return civstring("button_" + command.toLowerCase())
+}
+
+export function getAuthHeader() : object {
+    return { 'headers': { 'Authorization': 'Token ' + getToken() } }
+}
+
+export function executeCommand(command: string, pos: I.Pos, o: object | null) {
+    let q = ""
+    if (pos == null) q = "row=-1&col=-1"
+    else q = "row=" + pos.row + "&col=" + pos.col
+    axios.post('/command?action=' + command + "&" + q, null, getAuthHeader())
 }

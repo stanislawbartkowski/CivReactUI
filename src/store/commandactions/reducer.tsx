@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import * as actions from './actions';
 
-const reducer: Reducer = (state = actions.commandNone, action) => {
+const reducer: Reducer = (state = actions.commandReset, action) => {
     switch (action.type) {
         case actions.SQUARECLICKED: return {
             current: action.type,

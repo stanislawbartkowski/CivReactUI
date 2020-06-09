@@ -15,7 +15,7 @@ const game_board = (board: object | null, token: string | null) => {
 
 export const refresh_board = (token: string) => {
     return (dispatch: any) => {
-        axios.get('/civdata?what=' + civdataactions.GETBOARD, { 'headers': { 'Authorization': 'Token ' + token } }).then(res => {
+        axios.get('/civdata?what=' + civdataactions.GETBOARD, C.getAuthHeader()).then(res => {
             C.log("Game board read");
             const board = res.data
             // the empty string means that board has not changed since the previous call
