@@ -21,7 +21,7 @@ const Board: FunctionComponent<I.TCivilizationPropsHighlight> = (props) => {
         <GameMap data={map} highlight={props.highlight} />
         <GameResources data={board} />
     </Box>
-    const leftmenu = <PlayerControl data={you} />
+    const leftmenu = <PlayerControl data={you} game={game}/>
     const topmenu: ReactElement = <TopStatusMap data={game} />
     return (
         <ResponsiveDrawer main={main} leftmenu={leftmenu} toplabel={topmenu} />

@@ -11,8 +11,13 @@ import ResourcePanel from './resources/ResourcePane'
 import CommandPane from './commandpane/CommandPane'
 import CommandControl from './command/CommandControl'
 
-const PlayerControl: FunctionComponent<I.TCivilizationProps> = (props: any) => {
+interface IPlayerControl extends I.TCivilizationProps {
+    game: object
+}
+
+const PlayerControl: FunctionComponent<IPlayerControl> = (props: any) => {
     const you = props.data;
+    const game = props.game;
 
     const units: Array<I.NameNumT> = [{ name: "Soldier", num: you.units.list.length }]
     const strength = you.units.units
@@ -25,7 +30,7 @@ const PlayerControl: FunctionComponent<I.TCivilizationProps> = (props: any) => {
         <PlayerStatus data={you} />
         <UnitStatus units={units} list={you.units.list} armystrength={strength} />
         <ResourcePanel resources={you.resources} hutvillages={you.hutvillages} />
-        <CommandControl />
+        <CommandControl data={game} />
         <CommandPane data={you.commands} />
     </Grid>
 }

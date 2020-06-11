@@ -7,7 +7,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { useDispatch } from 'react-redux';
 
-import { itemizedCommand, itemizedReset } from '../../../../store/itemizeaction/actions'
+import { itemizedReset } from '../../../../store/itemizeaction/actions'
 import { commandReset } from '../../../../store/commandactions/actions'
 
 import * as I from '../../../../js/I'
@@ -16,8 +16,9 @@ import * as iactions from '../../../../store/itemizeaction/actions';
 import * as cactions from '../../../../store/commandactions/actions';
 
 
-const CommandControl: FunctionComponent = () => {
+const CommandControl: FunctionComponent<I.TCivilizationProps> = (props) => {
 
+    const game = props.data
     const dispatch = useDispatch()
     const itemizecurrent = useSelector((state: any) => state.itemize.current);
     const command = useSelector((state: any) => state.itemize.command);
@@ -26,14 +27,17 @@ const CommandControl: FunctionComponent = () => {
     const clickedcurrent = useSelector((state: any) => state.command.current);
     const clickedP: I.Pos = useSelector((state: any) => state.command.square);
 
-    if (itemizecurrent == iactions.ITEMIZE_COMMAND && clickedcurrent == cactions.SQUARECLICKED) {
-        C.log("Clicked:" + command + " square:" + clickedP);
+    if ((itemizecurrent == iactions.ITEMIZE_COMMAND && clickedcurrent == cactions.SQUARECLICKED) ||
+        (itemizecurrent == iactions.NOITEMIZE_COMMAND)) {
+        if (itemizecurrent == iactions.ITEMIZE_COMMAND) C.trace('CommandControl', "Clicked:" + command + " square:" + clickedP);
+        else C.trace('CommandControl', "Command:" + command);
         dispatch(commandReset());
         dispatch(itemizedReset())
-        C.executeCommand(command, clickedP, null)
+        if (command == "ENDOFPHASE") C.executeEndOfPhase(game.phase)
+        else C.executeCommand(command, clickedP, itemized)
     }
 
-    if (itemizecurrent == iactions.ITEMIZE_NONE) return null;
+    if (itemizecurrent == iactions.ITEMIZE_RESET) return null;
     return <Paper>{C.commandText(command)}</Paper>
 }
 

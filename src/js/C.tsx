@@ -184,18 +184,18 @@ export function getStrength(strength: Array<any>, branch: string): number {
  * return : array of highlight squares
  */
 
- function transformarmyitemized(itemized : Array<any>) : Array<I.Pos> {
-    return itemized.map(e => {return {"row" : e.param.row, "col" : e.param.col}})
- }
+function transformarmyitemized(itemized: Array<any>): Array<I.Pos> {
+    return itemized.map(e => { return { "row": e.param.row, "col": e.param.col } })
+}
 
 export function itemizetoHighlight(command: string, itemized: any): Array<I.Pos> {
     switch (command) {
-        case "BUILDCAPITAL" :
-        case "BUILDCITY" : break
-        case "SETARMY" :
-        case "SETSCOUT": 
-        case "BUYRMY": 
-        case "BUYSCOUT" : return transformarmyitemized(itemized);
+        case "BUILDCAPITAL":
+        case "BUILDCITY": break
+        case "SETARMY":
+        case "SETSCOUT":
+        case "BUYRMY":
+        case "BUYSCOUT": return transformarmyitemized(itemized);
     }
     return itemized
 }
@@ -207,13 +207,61 @@ export function commandText(command: string): string {
     return civstring("button_" + command.toLowerCase())
 }
 
-export function getAuthHeader() : object {
+/**
+ * Create authorization header with token
+ */
+
+export function getAuthHeader(): object {
     return { 'headers': { 'Authorization': 'Token ' + getToken() } }
 }
 
-export function executeCommand(command: string, pos: I.Pos, o: object | null) {
+// --------------------------
+// execute command
+// --------------------------
+
+
+/**
+ * Execute command through REST/API
+ * 
+ * @param command Command id
+ * @param pos square postition
+ * @param o Addtional JSON parameter
+ */
+
+function callCommand(command: string, pos: I.Pos | null, o: object | null | string) {
     let q = ""
     if (pos == null) q = "row=-1&col=-1"
     else q = "row=" + pos.row + "&col=" + pos.col
-    axios.post('/command?action=' + command + "&" + q, null, getAuthHeader())
+    const url: string = '/command?action=' + command + "&" + q
+    const encode = encodeURI(JSON.stringify(o))
+    const jsparam = (o == null) ? "" : "&jsparam=" + encode
+    axios.post(url + jsparam, null, getAuthHeader())
+}
+
+function findCity(square: I.Pos, itemize: Array<any>): I.Pos {
+    const e = itemize.find(e => eqP(e.param, square))
+    return e.p;
+}
+
+export function executeCommand(command: string, square: I.Pos, itemize: Array<any>) {
+    let jspar: object | null = null
+    let pos : I.Pos|null = square
+    switch (command) {
+        case "SETCAPITAL": break;
+
+        case "SETARMY":
+        case "SETSCOUT":
+        case "BUYARMY":
+        case "BUYSCOUT": jspar = square; pos = findCity(square, itemize); break;
+    }
+    callCommand(command, pos, jspar)
+}
+
+export function executeEndOfPhase(phase : string) {
+    callCommand("ENDOFPHASE", null, phase)
+}
+
+export function commandItemized(command: string): boolean {
+    if (command == "ENDOFPHASE") return false
+    return true
 }

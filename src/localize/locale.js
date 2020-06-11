@@ -35,7 +35,8 @@ let strings = new LocalizedStrings({
         combatbonus: "Combat bonus",
         button_setcapital: "Build capital",
         button_setscout: "Deploy scout",
-        button_setarmy: "Deploy army"
+        button_setarmy: "Deploy army",
+        button_endofphase: "End of phase"
     }
 });
 

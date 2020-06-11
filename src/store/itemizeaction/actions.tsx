@@ -3,7 +3,8 @@ import axios from '../../axios';
 import * as C from '../../js/C'
 
 export const ITEMIZE_COMMAND: string = "ITEMIZE_COMMAND";
-export const ITEMIZE_NONE: string = "ITEMIZE_NONE";
+export const ITEMIZE_RESET: string = "ITEMIZE_RESET";
+export const NOITEMIZE_COMMAND: string = "NOITEMIZE_COMMAND"
 
 const itemized_command = (command: string, itemized: any) => {
     return {
@@ -15,7 +16,14 @@ const itemized_command = (command: string, itemized: any) => {
 
 export const itemizedReset = () => {
     return {
-        type: ITEMIZE_NONE
+        type: ITEMIZE_RESET
+    }
+}
+
+export const noitemizeCommand = (command: string) => {
+    return {
+        type: NOITEMIZE_COMMAND,
+        command: command
     }
 }
 

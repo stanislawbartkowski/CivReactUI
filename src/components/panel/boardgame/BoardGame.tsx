@@ -16,15 +16,16 @@ const BoardGame: React.FC = () => {
   const itemizecurrent = useSelector((state: any) => state.itemize.current);
   const command = useSelector((state: any) => state.itemize.command);
   const itemized = useSelector((state: any) => state.itemize.itemized);
-  const highlight : Array<I.Pos> = itemizecurrent == iactions.ITEMIZE_NONE ? [] : C.itemizetoHighlight(command,itemized)
+  const highlight: Array<I.Pos> = itemizecurrent == iactions.ITEMIZE_COMMAND ? C.itemizetoHighlight(command, itemized) : []
 
-  C.trace('MainBoard', current + " " + mboard + " " + token);
-  C.trace('MainBoard', "itemize:" + itemizecurrent)
+  C.trace('BoardGame', current + " " + mboard + " " + token);
+  C.trace('BoardGame', "itemize:" + itemizecurrent)
+  C.trace('BoardGame', "command:" + command)
 
   const noboard = (mboard == null) || (token != C.getToken());
 
   if (noboard) return null;
-  else return <Board data={mboard} highlight={highlight}/>
+  else return <Board data={mboard} highlight={highlight} />
 }
 
 export default BoardGame;

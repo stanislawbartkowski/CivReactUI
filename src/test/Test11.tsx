@@ -17,7 +17,11 @@ const Test11: React.FC = () => {
     },
     {
       "command": "SETARMY"
+    },
+    {
+      "command": "ENDOFPHASE"
     }
+
   ];
 
   return <CommandPane data={command} />
