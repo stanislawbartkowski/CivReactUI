@@ -20,6 +20,33 @@ const Test11: React.FC = () => {
     },
     {
       "command": "ENDOFPHASE"
+    },
+    {
+      "command": "BUYARTILLERY"
+    },
+    {
+      "command": "BUYINFANTRY"
+    },
+    {
+      "command": "BUYMOUNTED"
+    },
+    {
+      "command": "SPENDTRADE"
+    },
+    {
+      "command": "HARVESTRESOURCE"
+    },
+    {
+      "command": "BUYBUILDING"
+    },
+    {
+      "command": "BUYARMY"
+    },
+    {
+      "command": "DEVOUTTOCULTURE"
+    },
+    {
+      "command": "ENDOFPHASE"
     }
 
   ];

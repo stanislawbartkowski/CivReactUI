@@ -6,21 +6,21 @@ import * as C from '../js/C'
 
 const Test5: React.FC = () => {
 
-    const confirm = useConfirm();
-
-    const handleClickOpenOld = () => {
-        confirm({ description: 'This action is permanent!' })
-            .then(() => { /* ... */ });
-    };
-
     const handleClickOpen = () => {
         C.confirmAlert("Hello").then(() => { alert("Yes")})
+    };
+
+    const handleClickInfo = () => {
+        C.infoAlert("aaa","bbb")
     };
 
     return (
             <div>
                 <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                    Open simple dialog
+                    Confirm dialog
+           </Button>
+           <Button variant="outlined" color="primary" onClick={handleClickInfo}>
+                    Info dialog
            </Button>
             </div>
     );

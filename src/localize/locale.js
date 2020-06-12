@@ -36,7 +36,17 @@ let strings = new LocalizedStrings({
         button_setcapital: "Build capital",
         button_setscout: "Deploy scout",
         button_setarmy: "Deploy army",
-        button_endofphase: "End of phase"
+        button_endofphase: "End of phase",
+        button_buyartillery: "Buy artillery",
+        button_buyinfantry: "Buy infantry",
+        button_buymounted: "Buy mounted",
+        button_spendtrade: "Spend trade",
+        button_harvestresource: "Harvest resource",
+        button_buyarmy: "Buy army",
+        button_buybuilding: "Buy building",
+        button_devouttoculture: "Devout to culture",
+        notimplemented: "Not implemented yet",
+        commandnotimplemented: "{0} command not implemented yet"
     }
 });
 

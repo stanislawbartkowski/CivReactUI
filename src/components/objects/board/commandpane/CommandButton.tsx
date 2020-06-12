@@ -9,9 +9,17 @@ import Capital from '../../../images/Capital'
 import Scout from '../../../images/Scout'
 import Army from '../../../images/Army'
 import Hand from '../../../images/Hand'
+import Artillery from '../../../images/Artillery'
+import Infantry from '../../../images/Infantry'
+import Mounted from '../../../images/Mounted'
+import Trade from '../../../images/Trade'
+import Buybuilding from '../../../images/Buybuilding'
+import Culture from '../../../images/Culture'
+import Sun from '../../../images/Sun'
 
 import * as I from '../../../../js/I'
 import * as C from '../../../../js/C'
+import civstring from '../../../../localize/locale';
 
 type CommandGame = { command: string };
 
@@ -31,6 +39,14 @@ function getButtonIcon(command: string): FunctionComponent<I.TSvgComponent> {
     case "SETARMY": Res = Army; break
     case "ENDOFPHASE": Res = Hand; break;
     case "SETCAPITAL": Res = Capital; break;
+    case "BUYARTILLERY": Res = Artillery; break;
+    case "BUYINFANTRY": Res = Infantry; break;
+    case "BUYMOUNTED": Res = Mounted; break;
+    case "SPENDTRADE": Res = Trade; break;
+    case "BUYBUILDING": Res = Buybuilding; break;
+    case "BUYARMY": Res = Army; break;
+    case "DEVOUTTOCULTURE": Res = Culture; break;
+    case "HARVESTRESOURCE": Res = Sun; break;
   }
 
   return Res;
@@ -45,6 +61,11 @@ const CommandButton: FunctionComponent<CommandGame> = (props) => {
   const Ico: FunctionComponent<I.TSvgComponent> = getButtonIcon(commandid)
 
   const handleClick = () => {
+    if (!C.implementedCommand(commandid)) {
+      const mess: string = civstring("commandnotimplemented", command.toUpperCase());
+      C.notimplementedAlert(mess)
+      return
+    }
     if (C.commandItemized(commandid)) dispatch(itemizedCommand(commandid));
     else dispatch(noitemizeCommand(commandid))
   }

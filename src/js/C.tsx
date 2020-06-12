@@ -38,13 +38,26 @@ var confirm: any = null
 
 export function setConfirm(pconfirm: any) { confirm = pconfirm }
 
-export function confirmAlert(question: string, title: String = civstring('areyousure')) {
+export function confirmAlert(question: string, title: string = civstring('areyousure')) {
     return confirm({
         description: question,
         confirmationText: civstring('ok'),
         cancellationText: civstring('cancel'),
         title: title
     })
+}
+
+export function infoAlert(mess: string, title: string) {
+    return confirm({
+        description: mess,
+        confirmationText: civstring('ok'),
+        cancellationText: null,
+        title: title
+    })
+}
+
+export function notimplementedAlert(mess: string) {
+    infoAlert(mess, civstring("notimplemented"))
 }
 
 // ==================================
@@ -245,7 +258,7 @@ function findCity(square: I.Pos, itemize: Array<any>): I.Pos {
 
 export function executeCommand(command: string, square: I.Pos, itemize: Array<any>) {
     let jspar: object | null = null
-    let pos : I.Pos|null = square
+    let pos: I.Pos | null = square
     switch (command) {
         case "SETCAPITAL": break;
 
@@ -257,11 +270,15 @@ export function executeCommand(command: string, square: I.Pos, itemize: Array<an
     callCommand(command, pos, jspar)
 }
 
-export function executeEndOfPhase(phase : string) {
+export function executeEndOfPhase(phase: string) {
     callCommand("ENDOFPHASE", null, phase)
 }
 
 export function commandItemized(command: string): boolean {
     if (command == "ENDOFPHASE") return false
     return true
+}
+
+export function implementedCommand(command: string): boolean {
+    return false;
 }

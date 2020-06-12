@@ -8,17 +8,17 @@ import { BrowserRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 
 import FrontPanel from './components/panel/frontpanel/FrontPanel';
-import PopUps from './components/popups/PopUps'; 
+import PopUps from './components/popups/PopUps';
 
 import * as actions from './store/newgamepanel/actions'
-import {refresh_board } from './store/boardactions/actions'
+import { refresh_board } from './store/boardactions/actions'
 
 
 //import Test1 from './test/Test1'
 //import Test2 from './test/Test2'
 //import Test3 from './test/Test3'
 //import Test4 from './test/Test4'
-//import Test5 from './test/Test5'
+import Test5 from './test/Test5'
 import Test6 from './test/Test6'
 //import Test7 from './test/Test7'
 import Test8 from './test/Test8'
@@ -36,6 +36,9 @@ import { useConfirm } from 'material-ui-confirm';
 const theme: Theme = createMuiTheme();
 
 const App: React.FC = () => {
+
+  const confirm = useConfirm();
+  C.setConfirm(confirm);
 
   const dispatch = useDispatch();
 
@@ -64,7 +67,7 @@ const XApp: React.FC = () => {
   const confirm = useConfirm();
   C.setConfirm(confirm);
 
-  return <Test11 />
+  return <Test5 />
 }
 
 export default App;
