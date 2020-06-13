@@ -1,4 +1,5 @@
-import civstring from "../localize/locale";
+import civstring from '../localize/locale'
+import * as comm from './comm'
 import * as I from './I';
 import red from '@material-ui/core/colors/red';
 import axios from '../axios';
@@ -201,6 +202,10 @@ function transformarmyitemized(itemized: Array<any>): Array<I.Pos> {
     return itemized.map(e => { return { "row": e.param.row, "col": e.param.col } })
 }
 
+function transformbuyunit(itemized: Array<any>): Array<I.Pos> {
+    return itemized.map(e => { return { "row": e.p.row, "col": e.p.col } })
+}
+
 export function itemizetoHighlight(command: string, itemized: any): Array<I.Pos> {
     switch (command) {
         case "BUILDCAPITAL":
@@ -209,8 +214,21 @@ export function itemizetoHighlight(command: string, itemized: any): Array<I.Pos>
         case "SETSCOUT":
         case "BUYRMY":
         case "BUYSCOUT": return transformarmyitemized(itemized);
+        case comm.BUYINFANTRY:
+        case comm.BUYMOUNTED:
+        case comm.BUYARTILLERY: return transformbuyunit(itemized)
+
     }
     return itemized
+}
+
+export function commandPopUp(command: string): boolean {
+    switch (command) {
+        case comm.BUYARTILLERY:
+        case comm.BUYINFANTRY:
+        case comm.BUYMOUNTED: return true;
+    }
+    return false
 }
 
 /**
@@ -271,14 +289,26 @@ export function executeCommand(command: string, square: I.Pos, itemize: Array<an
 }
 
 export function executeEndOfPhase(phase: string) {
-    callCommand("ENDOFPHASE", null, phase)
+    callCommand(comm.ENDOFPHASE, null, phase)
 }
 
 export function commandItemized(command: string): boolean {
-    if (command == "ENDOFPHASE") return false
+    if (command == comm.ENDOFPHASE) return false
     return true
 }
 
 export function implementedCommand(command: string): boolean {
+    switch (command) {
+        case comm.ENDOFPHASE :
+        case "BUYARMY":
+        case "BUYSCOUT":
+        case "SETCAPITAL":
+        case "SETARMY":
+        case "SETSCOUT":
+        case comm.BUYARTILLERY:
+        case comm.BUYMOUNTED:
+        case comm.BUYINFANTRY:
+            return true;
+    }
     return false;
 }

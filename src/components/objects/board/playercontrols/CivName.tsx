@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
 
 import * as I from '../../../../js/I'
 import * as C from '../../../../js/C'
@@ -15,11 +14,11 @@ const createDynamicMuiTheme = (color: string) => {
                 color: 'white',
                 margin: 5,
                 background: color,
-                width : 80
+                width: 80
             },
         }
         ))
-    }
+}
 
 
 const CivName: FunctionComponent<I.TCivilizationProps> = (props) => {

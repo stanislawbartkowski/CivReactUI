@@ -3,7 +3,6 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 import * as I from '../../../../js/I'
-import * as C from '../../../../js/C'
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({

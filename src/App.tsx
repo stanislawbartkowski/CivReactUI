@@ -27,6 +27,9 @@ import Test10 from './test/Test10'
 import Test11 from './test/Test11'
 import Test12 from './test/Test12'
 import Test13 from './test/Test13'
+import Test14 from './test/Test14'
+import Test15 from './test/Test15'
+import Test16 from './test/Test16'
 
 import { createMuiTheme } from '@material-ui/core/styles';
 import { Theme } from '@material-ui/core/styles';
@@ -67,7 +70,7 @@ const XApp: React.FC = () => {
   const confirm = useConfirm();
   C.setConfirm(confirm);
 
-  return <Test5 />
+  return <Test14 />
 }
 
 export default App;

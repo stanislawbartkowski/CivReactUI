@@ -2,8 +2,11 @@ import React, { FunctionComponent } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
+import { useSelector } from "react-redux";
+
 
 import { itemizedCommand, noitemizeCommand } from '../../../../store/itemizeaction/actions'
+import * as actions from '../../../../store/blockaction/actions'
 
 import Capital from '../../../images/Capital'
 import Scout from '../../../images/Scout'
@@ -59,8 +62,11 @@ const CommandButton: FunctionComponent<CommandGame> = (props) => {
   const commandid = props.command;
   const command: string = C.commandText(commandid)
   const Ico: FunctionComponent<I.TSvgComponent> = getButtonIcon(commandid)
+  const blocked = useSelector((state: any) => state.block.current);
+  const blockbutton = blocked == actions.BLOCK_ACTION
 
   const handleClick = () => {
+    if (blockbutton) return
     if (!C.implementedCommand(commandid)) {
       const mess: string = civstring("commandnotimplemented", command.toUpperCase());
       C.notimplementedAlert(mess)
