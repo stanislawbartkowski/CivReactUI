@@ -96,6 +96,18 @@ export function getCivShort(civ: string): string {
     return civ[0] + civ[1];
 }
 
+export function getMap(board : any) : Array<any> {
+    return board.map
+}
+
+export function getGame(board : any) : any {
+    return board.game
+}
+
+export function getYou(board : any) : any {
+    return board.you
+}
+
 /** getBuilding */
 
 function lookupByName(list: Array<any>, name: string, err: string): any {

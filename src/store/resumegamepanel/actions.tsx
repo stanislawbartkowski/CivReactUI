@@ -22,10 +22,8 @@ const setresumegamesReady = (data: any) => {
 export const resumegamesReady = () => {
     return (dispatch: any) => {
         axios.get('/civdata?what=' + civdataactions.GETGAMES).then(res => {
-            axios.get('/civdata?what=' + civdataactions.GETGAMES).then(res => {
                 C.log("Games received");
                 dispatch(setresumegamesReady(res.data));
-            });
         });
     }
 }

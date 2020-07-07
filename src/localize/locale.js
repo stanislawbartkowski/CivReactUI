@@ -46,7 +46,9 @@ let strings = new LocalizedStrings({
         button_buybuilding: "Buy building",
         button_devouttoculture: "Devout to culture",
         notimplemented: "Not implemented yet",
-        commandnotimplemented: "{0} command not implemented yet"
+        commandnotimplemented: "{0} command not implemented yet",
+        youareabouttobuyunit: "You are about to buy a unit",
+        clickcity: "Click City"
     }
 });
 

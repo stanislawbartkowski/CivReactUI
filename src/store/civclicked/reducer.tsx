@@ -1,5 +1,6 @@
-import * as actions from './actions';
 import { Reducer } from 'redux';
+
+import * as actions from './actions';
 
 const startPanel = {
     current: actions.CLICK_CIV,

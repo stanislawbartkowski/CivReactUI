@@ -25,9 +25,28 @@ export const refresh_board = (token: string) => {
     }
 }
 
+function kickoffgame(res: any) {
+    const token: String = res.data;
+    C.log("token=" + token);
+    const t: string[] = token.split(",");
+    C.setToken(t[0]);
+}
+
 
 export const start_board_training = (civ: String) => {
     return (dispatch: any) => {
-        dispatch(game_board({ a: "b" }, null));
+        axios.get('/civdata?what=' + civdataactions.REGISTEROWNER + "&param=" + civ).then(res => {
+            C.log("Game resumed");
+            kickoffgame(res)
+        });
+    }
+}
+
+export const resume_board_training = (gameid: number, civ: string,) => {
+    return (dispatch: any) => {
+        axios.get('/resumegame?gameid=' + gameid + "&civ=" + civ).then(res => {
+            C.log("Game resumed");
+            kickoffgame(res)
+        });
     }
 }

@@ -10,8 +10,7 @@ import * as I from '../../../js/I';
 import * as C from '../../../js/C';
 import civstring from '../../../localize/locale'
 import { civClicked } from '../../../store/civclicked/actions'
-
-
+import { resume_board_training  } from '../../../store/boardactions/actions'
 
 const boxProps = {
     bgcolor: grey[200],
@@ -58,26 +57,14 @@ const ResumeGame: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
         playstring = data.civ[0] + " " + data.civ[1]
     }
 
-    const resume_board_game = (id: String, civ: string) => {
-        axios.get('/resumegame?gameid=' + id + "&civ=" + civ).then(res => {
-            C.log("Game resumed");
-            const token: String = res.data;
-            C.log("token=" + token);
-            const t: string[] = token.split(",");
-            C.setToken(t[0]);
-        });
-    }
-
-
-    const resumegame = (id: String, civ: string) => {
+    const resumegame = (id: number, civ: string) => {
         C.log("resume " + id + " " + civ);
         dispatch(civClicked(civ, {
             titlestart: "titleresumetraining",
             doyouwanttostart: "doyouwanttoresumetrainig",
-            action: () => { resume_board_game(id, civ); }
+            action: () => { dispatch(resume_board_training(id, civ)); }
         }))
     }
-
 
     return (
         <Box {...boxProps}>

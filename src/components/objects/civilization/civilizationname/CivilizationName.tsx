@@ -29,14 +29,15 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const CivilizationName: FunctionComponent<I.TCivilizationProps> = ({ data }) => {
     const classes = useStyles();
-    const civ = C.getCivShort(data);
+    const civname: string = data
+    const civ: string = C.getCivShort(civname);
     const dispatch = useDispatch();
 
     return (
         <Button className={classes.CircleShapeView} onClick={() => dispatch(civClicked(data, {
             titlestart: "titlestarttraining",
             doyouwanttostart: "doyouwanttostarttrainig",
-            action: () => { dispatch(start_board_training(civ)); }
+            action: () => { dispatch(start_board_training(civname)); }
         }))} >
             {civ}
         </Button>
