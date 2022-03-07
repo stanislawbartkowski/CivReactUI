@@ -1,8 +1,8 @@
 import React, { ReactElement, FunctionComponent, Children } from 'react';
 
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import { makeStyles, createStyles, Theme } from '@mui/material/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({

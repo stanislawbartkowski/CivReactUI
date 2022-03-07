@@ -1,13 +1,13 @@
 import React, { FunctionComponent, ReactElement} from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
+import AppBar from '@mui/material/AppBar';
+import CssBaseline from '@mui/material/CssBaseline';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material//Drawer';
+import Hidden from '@mui/material//Hidden';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import { makeStyles, useTheme, Theme, createStyles } from '@mui/material/styles';
 
 import CivLogo from '../components/panel/frontpanel/panelcomp/CivLogo';
 import * as I from '../js/I';

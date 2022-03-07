@@ -1,7 +1,7 @@
 import civstring from '../localize/locale'
 import * as comm from './comm'
 import * as I from './I';
-import red from '@material-ui/core/colors/red';
+import red from '@mui/material/colors/red';
 import axios from '../axios';
 
 export { }

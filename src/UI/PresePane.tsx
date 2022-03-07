@@ -1,9 +1,9 @@
 import React, { ReactElement, FunctionComponent, Children } from 'react';
 
-import Badge from '@material-ui/core/Badge';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import Badge from '@mui/material/Badge';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import { makeStyles, createStyles, Theme } from '@mui/material/styles';
 
 import * as I from '../js/I'
 import * as C from '../js/C'

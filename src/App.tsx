@@ -31,8 +31,8 @@ import Test14 from './test/Test14'
 import Test15 from './test/Test15'
 import Test16 from './test/Test16'
 
-import { createMuiTheme } from '@material-ui/core/styles';
-import { Theme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@mui/material/styles';
+import { Theme } from '@mui/material/styles';
 import { useConfirm } from 'material-ui-confirm';
 
 
